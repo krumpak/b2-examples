@@ -2,7 +2,6 @@
 $errors = array();
 
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-  print_r($_POST);
   $ime = $_POST['ime'];
   if (strlen($ime) <= 2) {
     $errors[] = array('name' => 'ime', 'msg' => 'Ime ni dovolj dolgo');
