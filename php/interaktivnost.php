@@ -4,6 +4,8 @@ define( 'varovalka', true );
 
 session_start();
 
+include_once 'shared.php';
+
 include_once 'header.php';
 
 $errors = array();
