@@ -17,7 +17,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
   $hisna_st = $_POST['hisna_st'];
   $posta = $_POST['posta'];
   $postna_st = $_POST['postna_st'];
-  if (! preg_match('/\d{4}/i', $postna_st)) {
+  if (! preg_match('/^\d{4}$/i', $postna_st)) {
     $errors[] = array('name' => 'postna_st', 'msg' => 'Poštna številka ni pravilne oblike');
   }
   $kreditna = $_POST['kreditna'];
