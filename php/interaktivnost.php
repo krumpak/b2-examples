@@ -8,19 +8,37 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
     $errors[] = array('name' => 'ime', 'msg' => 'Ime ni dovolj dolgo');
   }
   $priimek = $_POST['priimek'];
+  if (strlen($priimek) <= 2) {
+    $errors[] = array('name' => 'priimek', 'msg' => 'Priimek ni dovolj dolg');
+  }
   $email = $_POST['email'];
   if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = array('name' => 'email', 'msg' => 'Email ni pravilne oblike');
   }
   $geslo = $_POST['geslo'];
+  if (! preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{20,}$/', $geslo)) {
+    $errors[] = array('name' => 'geslo', 'msg' => 'Geslo ni pravilne oblike');
+  }
   $ulica = $_POST['ulica'];
+  if (strlen($ulica) <= 2) {
+    $errors[] = array('name' => 'ulica', 'msg' => 'Ime ulice ni dovolj dolgo');
+  }
   $hisna_st = $_POST['hisna_st'];
+  if (strlen($hisna_st) <= 1) {
+    $errors[] = array('name' => 'hisna_st', 'msg' => 'Hišna številka ni dovolj dolga');
+  }
   $posta = $_POST['posta'];
+  if (strlen($posta) <= 2) {
+    $errors[] = array('name' => 'posta', 'msg' => 'Ime pošte ni dovolj dolgo');
+  }
   $postna_st = $_POST['postna_st'];
   if (! preg_match('/^\d{4}$/i', $postna_st)) {
     $errors[] = array('name' => 'postna_st', 'msg' => 'Poštna številka ni pravilne oblike');
   }
   $kreditna = $_POST['kreditna'];
+  if (strlen($kreditna) <= 2) {
+    $errors[] = array('name' => 'kreditna', 'msg' => 'Ime kreditne kartice ni dovolj dolgo');
+  }
   $kreditna_st = $_POST['kreditna_st'];
   if (! preg_match('/(\d{4})[\s\-](\d{4})[\s\-](\d{4})/i', $kreditna_st)) {
     $errors[] = array('name' => 'kreditna_st', 'msg' => 'Kreditna številka ni pravilne oblike');
