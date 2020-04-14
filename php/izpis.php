@@ -1,5 +1,11 @@
 <?php
 
+  define( 'varovalka', true );
+
+  session_start();
+
+  include_once 'header.php';
+
 echo "Moje ime je Gorazd.";
 
 echo "<br>";

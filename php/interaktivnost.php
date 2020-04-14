@@ -1,4 +1,15 @@
 <?php
+
+  define( 'varovalka', true );
+
+session_start();
+
+  include_once 'header.php';
+
+if ( isset($_SESSION['vzdevek']) ) {
+  echo $_SESSION['vzdevek'];
+}
+
 $errors = array();
 
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
@@ -23,7 +34,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
     $errors[] = array('name' => 'ulica', 'msg' => 'Ime ulice ni dovolj dolgo');
   }
   $hisna_st = $_POST['hisna_st'];
-  if (strlen($hisna_st) <= 1) {
+  if (strlen($hisna_st) < 1) {
     $errors[] = array('name' => 'hisna_st', 'msg' => 'Hišna številka ni dovolj dolga');
   }
   $posta = $_POST['posta'];
@@ -41,6 +52,15 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
   $kreditna_st = $_POST['kreditna_st'];
   if (! preg_match('/(\d{4})[\s\-](\d{4})[\s\-](\d{4})/i', $kreditna_st)) {
     $errors[] = array('name' => 'kreditna_st', 'msg' => 'Kreditna številka ni pravilne oblike');
+  }
+
+  if (count($errors) === 0) {
+    $_SESSION['login'] = true;
+    $_SESSION['vzdevek'] = $ime . ' ' . $priimek;
+    $_SESSION['uporabnik'] = $_POST;
+
+    header('Location: http://students.b2.eu/udelezenec02/php/domov.php');
+    exit;
   }
 } else {
   $ime = '';
@@ -94,4 +114,6 @@ function vrniNapako($errors, $tip) {
 </form>
 <br>
 <a href="http://students.b2.eu/udelezenec02/php/interaktivnost.php?kljuc=vrednost&status=ok&dan=sobota">get</a>
+
+<?php include_once 'footer.php'; ?>
 
