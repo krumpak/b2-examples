@@ -8,7 +8,7 @@
 
   session_destroy();
 
-  header('Location: http://students.b2.eu/udelezenec02/php/interaktivnost.php');
+  header('Location: ./interaktivnost.php');
 
   ?>
 

@@ -1,14 +1,10 @@
 <?php
 
-  define( 'varovalka', true );
+define( 'varovalka', true );
 
 session_start();
 
-  include_once 'header.php';
-
-if ( isset($_SESSION['vzdevek']) ) {
-  echo $_SESSION['vzdevek'];
-}
+include_once 'header.php';
 
 $errors = array();
 
