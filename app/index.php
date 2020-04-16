@@ -1,13 +1,20 @@
 <?php
+  define( 'varovalka', true );
 
-  echo (isset($_GET['task']) ? $_GET['task'] : 'task ne obstaja') . '<br>';
-  echo (isset($_GET['param']) ? $_GET['param'] : 'param ne obstaja') . '<br>';
+  session_start();
 
+  include_once 'shared.php';
 
+  if ( isset( $_GET['task'] ) && isset( $_GET['param'] ) && $_GET['task'] === 'oseba' && preg_match( '/^\d+$/', $_GET['param'] ) ) {
+    include_once 'izpisOsebe.php';
+  } else if ( isset( $_GET['task'] ) && ! isset( $_GET['param'] ) && $_GET['task'] === 'podjetje' ) {
+    include_once 'oPodjetju.php';
+  } else if (!isset( $_GET['task'] ) && ! isset( $_GET['param'] )) {
+    include_once 'izpisVsehOseb.php';
+  } else {
+    include_once 'error.php';
+  }
 
 
 ?>
 
-<a href="/udelezenec02/app/">prazno</a><br>
-<a href="/udelezenec02/app/dodaj">dodaj</a><br>
-<a href="/udelezenec02/app/dodaj/123">dodaj/123</a>
