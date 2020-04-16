@@ -24,6 +24,4 @@
   function getUserURL( $id ) {
     return getvar( 'APP_URL' ) . '/oseba/' . $id;
   }
-
 ?>
-

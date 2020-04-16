@@ -14,7 +14,4 @@
   } else {
     include_once 'error.php';
   }
-
-
 ?>
-
