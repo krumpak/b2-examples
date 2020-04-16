@@ -2,6 +2,10 @@
   if( ! defined('varovalka') ){
     die('403');
   }
+
+  session_start();
+
+  include_once 'shared.php';
 ?>
 <!doctype html>
 <html lang="en">

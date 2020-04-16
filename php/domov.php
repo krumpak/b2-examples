@@ -1,8 +1,6 @@
 <?php
   define( 'varovalka', true );
 
-  session_start();
-
   include_once 'header.php';
 
 ?>
