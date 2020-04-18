@@ -9,6 +9,8 @@
     include_once 'izpisOsebe.php';
   } else if ( isset( $_GET['task'] ) && ! isset( $_GET['param'] ) && $_GET['task'] === 'podjetje' ) {
     include_once 'oPodjetju.php';
+  } else if ( isset( $_GET['task'] ) && ! isset( $_GET['param'] ) && $_GET['task'] === 'prijava' ) {
+    include_once 'prijava.php';
   } else if (!isset( $_GET['task'] ) && ! isset( $_GET['param'] )) {
     include_once 'izpisVsehOseb.php';
   } else {

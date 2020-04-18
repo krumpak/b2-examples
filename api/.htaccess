@@ -4,6 +4,10 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/([^/]+)$ index.php?kupec=$1&id=$2 [L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)$ index.php?task=$1&username=$2&password=$3 [L]
+
 <Files .env>
     Order allow,deny
     Deny from all
