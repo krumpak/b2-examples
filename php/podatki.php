@@ -31,7 +31,6 @@
       'kreditna' => 'Visa',
       'kreditna_st' => '0654 7891 3578'
     )
-
   );
 
   $nov_kupec = array(
