@@ -53,6 +53,8 @@
     foreach ( $kupci as $kupec ) {
       if ( sha1($kupec['email']) === $_GET['username'] && $_GET['password'] === $kupec['geslo']) {
         $data = array( 'status' => 'success', 'code' => 200, 'data' => $kupec, 'message' => 'uspešno ste se prijavili' );
+      } else if ( sha1($kupec['email']) === $_GET['username'] && $_GET['password'] !== $kupec['geslo']) {
+        $data = array( 'status' => 'error', 'code' => 404, 'data' => NULL, 'message' => 'Geslo ni pravilno' );
       }
     }
   } else {
