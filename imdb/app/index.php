@@ -2,6 +2,21 @@
   define( 'varovalka', true );
 
   include_once './shared.php';
+
+  $host = getVar('HOST');
+  $db = getVar('DB');
+  $username = getVar('USERNAME');
+  $password = getVar('PASSWORD');
+
+  try {
+    $conn = new PDO("mysql:host=$host;dbname=$db", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  }
+  catch(PDOException $e)
+  {
+    echo "Connection failed: " . $e->getMessage();
+  }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,13 +27,19 @@
   <title>Seznam filmskih igralcev</title>
 </head>
 <body>
-<a href="<?= getvar('APP_URL'); ?>/app/">Seznam</a><hr><br>
+<a href="<?= getvar('APP_URL'); ?>/app/">Seznam</a>
+<a href="<?= getvar('APP_URL'); ?>/app/?task=add">Dodaj novega igralca/igralko</a>
+<hr><br>
 <?php
-  if ( isset( $_GET['vec'] ) && $_GET['vec'] >= 0 ) :
+  if ( isset( $_GET['vec'] ) && $_GET['vec'] >= 1 ) :
 
-    $raw = file_get_contents( getvar('APP_URL') . '/api/?igralec=' . intval( $_GET['vec'] ) );
-
-    $en = json_decode( $raw, true );
+    try {
+      $sql = $conn->prepare("SELECT * FROM udelezenec02.imdb WHERE id = :id LIMIT 1");
+      $sql->execute(array(':id' => intval($_GET['vec'])));
+      $en = $sql->fetch();
+    } catch (PDOException $e ) {
+      echo "Napaka pri tabeli: " . $e->getMessage();
+    }
 
     ?>
     <!-- Več o posamezneme igralcu ali igralki -->
@@ -34,27 +55,55 @@
       </tr>
       <tr>
         <td>Žanri:</td>
-        <td><?= implode( ', ', $en['zanri'] ); ?></td>
+        <td><?= $en['zanri']; ?></td>
       </tr>
       <tr>
         <td>Filmi:</td>
-        <td>
-          <?php // alternativa vrstici 36
-            foreach ($en['filmi'] as $index => $film) {
-              echo ($index === 0 ? '' : ', ') . $film;
-            }
-          ?>
-        </td>
+        <td><?= $en['filmi']; ?></td>
       </tr>
     </table>
 
-  <?php else :
+  <?php elseif ( isset($_GET['task']) && $_GET['task'] === 'add' ) :
+    if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) :
+      $insert = $conn->prepare("INSERT INTO udelezenec02.imdb (ime, priimek, kraj, zanri, ocena, filmi, nagrade) VALUES (:ime, :priimek, :kraj, :zanri, :ocena, :filmi, :nagrade);");
 
-    // pokličemo surove podatke
-    $raw = file_get_contents( getvar('APP_URL') . '/api/' );
+      $insert->execute(array(
+        ':ime' => $_POST['ime'],
+        ':priimek' => $_POST['priimek'],
+        ':kraj' => $_POST['kraj'],
+        ':zanri' => $_POST['zanri'],
+        ':ocena' => intval($_POST['ocena']),
+        ':filmi' => $_POST['filmi'],
+        ':nagrade' => $_POST['nagrade']
+      ));
 
-    // surove podatke pretvorimo v asociativni array
-    $array = json_decode( $raw, true );
+      echo "New record created successfully";
+    else : ?>
+
+obrazec za vnos nove osebe
+    <form method="POST">
+      ime: <input type="text" name="ime" id="ime"><br>
+      priimek: <input type="text" name="priimek" id="priimek"><br>
+      kraj: <input type="text" name="kraj" id="kraj"><br>
+      zanri: <input type="text" name="zanri" id="zanri"><br>
+      ocena: <input type="number" name="ocena" id="ocena" min="0" max="10"><br>
+      filmi: <input type="text" name="filmi" id="filmi"><br>
+      nagrade: <input type="text" name="nagrade" id="nagrade"><br>
+      <br>
+      <br>
+      <input type="submit" value="Dodaj">
+    </form>
+
+  <?php
+    endif;
+  else :
+    try {
+      $sql = $conn->prepare("SELECT * FROM udelezenec02.imdb");
+      $sql->execute();
+      $array = $sql->fetchAll();
+    } catch (PDOException $e ) {
+      echo "Napaka pri tabeli: " . $e->getMessage();
+    }
 
     ?>
 
@@ -66,7 +115,7 @@
           <td><?= $index + 1; ?></td>
           <td><?= $igralec['ime'] ?></td>
           <td><?= $igralec['priimek'] ?></td>
-          <td><a href="<?= getvar('APP_URL'); ?>/app/?vec=<?= $index; ?>">Preberi več</a></td>
+          <td><a href="<?= getvar('APP_URL'); ?>/app/?vec=<?= $igralec['id']; ?>">Preberi več</a></td>
         </tr>
       <?php endforeach; ?>
     </table>
@@ -75,3 +124,7 @@
 
 </body>
 </html>
+
+<?php
+  $conn = NULL;
+?>

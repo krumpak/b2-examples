@@ -10,7 +10,7 @@
           $value = preg_replace('/^' . $var . '=/', '', $vars);
           $clean = preg_replace('/["|\'|`]/', '', $value);
 
-          return $clean;
+          return trim($clean);
         }
       }
     }
