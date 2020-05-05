@@ -31,13 +31,9 @@
 <br>
 <?php
 
-  if ( isset( $_GET['vec'] ) && $_GET['vec'] >= 1 ) :
+  if ( isset( $_GET['task'] ) && $_GET['task'] === 'view' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
     include_once 'podrobno.php';
-
-  elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'add' ) :
-
-    include_once 'dodaj.php';
 
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'edit' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
@@ -46,6 +42,10 @@
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'delete' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
     include_once 'izbrisi.php';
+
+  elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'add' ) :
+
+    include_once 'dodaj.php';
 
   else :
 
