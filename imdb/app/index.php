@@ -31,96 +31,24 @@
 <a href="<?= getvar('APP_URL'); ?>/app/?task=add">Dodaj novega igralca/igralko</a>
 <hr><br>
 <?php
+
   if ( isset( $_GET['vec'] ) && $_GET['vec'] >= 1 ) :
 
-    try {
-      $sql = $conn->prepare("SELECT * FROM udelezenec02.imdb WHERE id = :id LIMIT 1");
-      $sql->execute(array(':id' => intval($_GET['vec'])));
-      $en = $sql->fetch();
-    } catch (PDOException $e ) {
-      echo "Napaka pri tabeli: " . $e->getMessage();
-    }
+    include_once 'podrobno.php';
 
-    ?>
-    <!-- Več o posamezneme igralcu ali igralki -->
-    Samo en igralec/igralka
-    <table>
-      <tr>
-        <td>Ime:</td>
-        <td><?= $en['ime']; ?></td>
-      </tr>
-      <tr>
-        <td>Priimek:</td>
-        <td><?= $en['priimek']; ?></td>
-      </tr>
-      <tr>
-        <td>Žanri:</td>
-        <td><?= $en['zanri']; ?></td>
-      </tr>
-      <tr>
-        <td>Filmi:</td>
-        <td><?= $en['filmi']; ?></td>
-      </tr>
-    </table>
+  elseif ( isset($_GET['task']) && $_GET['task'] === 'add' ) :
 
-  <?php elseif ( isset($_GET['task']) && $_GET['task'] === 'add' ) :
-    if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) :
-      $insert = $conn->prepare("INSERT INTO udelezenec02.imdb (ime, priimek, kraj, zanri, ocena, filmi, nagrade) VALUES (:ime, :priimek, :kraj, :zanri, :ocena, :filmi, :nagrade);");
+    include_once 'dodaj.php';
 
-      $insert->execute(array(
-        ':ime' => $_POST['ime'],
-        ':priimek' => $_POST['priimek'],
-        ':kraj' => $_POST['kraj'],
-        ':zanri' => $_POST['zanri'],
-        ':ocena' => intval($_POST['ocena']),
-        ':filmi' => $_POST['filmi'],
-        ':nagrade' => $_POST['nagrade']
-      ));
+  elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'edit' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
-      echo "New record created successfully";
-    else : ?>
+    include_once 'uredi.php';
 
-obrazec za vnos nove osebe
-    <form method="POST">
-      ime: <input type="text" name="ime" id="ime"><br>
-      priimek: <input type="text" name="priimek" id="priimek"><br>
-      kraj: <input type="text" name="kraj" id="kraj"><br>
-      zanri: <input type="text" name="zanri" id="zanri"><br>
-      ocena: <input type="number" name="ocena" id="ocena" min="0" max="10"><br>
-      filmi: <input type="text" name="filmi" id="filmi"><br>
-      nagrade: <input type="text" name="nagrade" id="nagrade"><br>
-      <br>
-      <br>
-      <input type="submit" value="Dodaj">
-    </form>
-
-  <?php
-    endif;
   else :
-    try {
-      $sql = $conn->prepare("SELECT * FROM udelezenec02.imdb");
-      $sql->execute();
-      $array = $sql->fetchAll();
-    } catch (PDOException $e ) {
-      echo "Napaka pri tabeli: " . $e->getMessage();
-    }
 
-    ?>
+    include_once 'seznam.php';
 
-    <!-- Cel seznam vseh igralcev -->
-    Cel seznam
-    <table>
-      <?php foreach ( $array as $index => $igralec ) : ?>
-        <tr>
-          <td><?= $index + 1; ?></td>
-          <td><?= $igralec['ime'] ?></td>
-          <td><?= $igralec['priimek'] ?></td>
-          <td><a href="<?= getvar('APP_URL'); ?>/app/?vec=<?= $igralec['id']; ?>">Preberi več</a></td>
-        </tr>
-      <?php endforeach; ?>
-    </table>
-
-  <?php endif; ?>
+  endif; ?>
 
 </body>
 </html>
