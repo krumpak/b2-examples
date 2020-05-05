@@ -21,7 +21,7 @@ Cel seznam
       <td><?= $index + 1; ?></td>
       <td><?= $igralec['ime'] ?></td>
       <td><?= $igralec['priimek'] ?></td>
-      <td><a href="<?= getvar('APP_URL'); ?>/app/?vec=<?= $igralec['id']; ?>">Preberi več</a></td>
+      <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?vec=<?= $igralec['id']; ?>">Preberi več</a></td>
       <td><a href="<?= getvar('APP_URL'); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">Uredi</a></td>
     </tr>
   <?php endforeach; ?>

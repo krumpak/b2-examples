@@ -6,32 +6,32 @@
   if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) :
 
     try {
-      $update = $conn->prepare("UPDATE udelezenec02.imdb SET ime=:ime, priimek=:priimek, kraj=:kraj, zanri=:zanri, ocena=:ocena, filmi=:filmi, nagrade=:nagrade, updated_at=now() WHERE id = :id");
-      $update->bindValue(":id", intval($_POST['id']));
-      $update->bindValue(":ime", $_POST['ime']);
-      $update->bindValue(":priimek", $_POST['priimek']);
-      $update->bindValue(":kraj", $_POST['kraj']);
-      $update->bindValue(":zanri", $_POST['zanri']);
-      $update->bindValue(":ocena", intval($_POST['ocena']));
-      $update->bindValue(":filmi", $_POST['filmi']);
-      $update->bindValue(":nagrade", $_POST['nagrade']);
-      $update->bindValue(":updated_at", date('Y-m-d H:i:s'));
-      $update->execute();
-    } catch (PDOException $e ) {
+      $update = $conn->prepare( "UPDATE udelezenec02.imdb SET ime=:ime, priimek=:priimek, kraj=:kraj, zanri=:zanri, ocena=:ocena, filmi=:filmi, nagrade=:nagrade, updated_at=now() WHERE id = :id" );
+      $update->execute( array(
+        ":id"      => intval( $_POST['id'] ),
+        ":ime"     => $_POST['ime'],
+        ":priimek" => $_POST['priimek'],
+        ":kraj"    => $_POST['kraj'],
+        ":zanri"   => $_POST['zanri'],
+        ":ocena"   => intval( $_POST['ocena'] ),
+        ":filmi"   => $_POST['filmi'],
+        ":nagrade" => $_POST['nagrade']
+      ) );
+    } catch ( PDOException $e ) {
       echo "Napaka pri tabeli: " . $e->getMessage();
     }
 
   endif;
 
   try {
-    $sql = $conn->prepare("SELECT * FROM udelezenec02.imdb WHERE id = :id LIMIT 1");
-    $sql->execute(array(':id' => intval($_GET['id'])));
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE id = :id LIMIT 1" );
+    $sql->execute( array( ':id' => intval( $_GET['id'] ) ) );
     $en = $sql->fetch();
-  } catch (PDOException $e ) {
+  } catch ( PDOException $e ) {
     echo "Napaka pri tabeli: " . $e->getMessage();
   }
 ?>
-Uredi podatke igralca/igrallke
+Uredi podatke igralca/igrallke [<a href="<?= getvar( 'APP_URL' ); ?>/app/?vec=<?= intval( $_GET['id'] ); ?>">zapri urejanje</a>]
 <form method="POST">
   <input type="hidden" name="zeton" id="zeton" value="">
   <input type="hidden" name="id" id="id" value="<?= $en['id']; ?>">

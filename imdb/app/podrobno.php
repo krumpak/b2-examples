@@ -5,10 +5,10 @@
 
 
   try {
-    $sql = $conn->prepare("SELECT * FROM udelezenec02.imdb WHERE id = :id LIMIT 1");
-    $sql->execute(array(':id' => intval($_GET['vec'])));
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE id = :id LIMIT 1" );
+    $sql->execute( array( ':id' => intval( $_GET['vec'] ) ) );
     $en = $sql->fetch();
-  } catch (PDOException $e ) {
+  } catch ( PDOException $e ) {
     echo "Napaka pri tabeli: " . $e->getMessage();
   }
 
