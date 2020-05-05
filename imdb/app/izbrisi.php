@@ -5,8 +5,6 @@
 
   try {
 //    $delete = $conn->prepare( "DELETE FROM udelezenec02.imdb WHERE id = :id" );
-//    $delete->execute( array( ":id" => intval( $_GET['id'] ) ) );
-
     $delete = $conn->prepare( "UPDATE udelezenec02.imdb SET status=0, deleted_at=now() WHERE id = :id AND status = 1" );
     $delete->execute( array( ":id" => intval( $_GET['id'] ) ) );
 
