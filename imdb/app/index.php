@@ -43,6 +43,10 @@
 
     include_once 'uredi.php';
 
+  elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'delete' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+
+    include_once 'izbrisi.php';
+
   else :
 
     include_once 'seznam.php';

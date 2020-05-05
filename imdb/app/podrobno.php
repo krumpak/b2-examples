@@ -14,7 +14,9 @@
 
 ?>
 <!-- Več o posamezneme igralcu ali igralki -->
-Samo en igralec/igralka [<a href="<?= getvar('APP_URL'); ?>/app/?task=edit&id=<?= $en['id']; ?>">uredi</a>]
+Samo en igralec/igralka
+[<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $en['id']; ?>">uredi</a>]
+[<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $en['id']; ?>">Izbriši</a>]
 <table>
   <tr>
     <td>Ime:</td>
