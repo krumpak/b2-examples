@@ -36,7 +36,7 @@
   }
 ?>
 Uredi podatke igralca/igrallke
-[<a href="<?= getvar( 'APP_URL' ); ?>/app/?vec=<?= intval( $_GET['id'] ); ?>">zapri urejanje</a>]
+[<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= intval( $_GET['id'] ); ?>">zapri urejanje</a>]
 [<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= intval( $_GET['id'] ); ?>">Izbriši</a>]
 <form method="POST">
   <input type="hidden" name="zeton" id="zeton" value="">
