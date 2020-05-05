@@ -6,7 +6,7 @@
   if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) :
 
     try {
-      $update = $conn->prepare( "UPDATE udelezenec02.imdb SET ime=:ime, priimek=:priimek, kraj=:kraj, zanri=:zanri, ocena=:ocena, filmi=:filmi, nagrade=:nagrade, updated_at=now() WHERE id = :id" );
+      $update = $conn->prepare( "UPDATE udelezenec02.imdb SET ime=:ime, priimek=:priimek, kraj=:kraj, zanri=:zanri, ocena=:ocena, filmi=:filmi, nagrade=:nagrade, updated_at=now() WHERE id = :id AND status = 1" );
       $update->execute( array(
         ":id"      => intval( $_POST['id'] ),
         ":ime"     => $_POST['ime'],
@@ -24,9 +24,13 @@
   endif;
 
   try {
-    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE id = :id LIMIT 1" );
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE id = :id AND status = 1 LIMIT 1" );
     $sql->execute( array( ':id' => intval( $_GET['id'] ) ) );
     $en = $sql->fetch();
+
+    if ( empty( $en ) ) {
+      header( 'Location: ' . getvar( 'APP_URL' ) . '/app/' );
+    }
   } catch ( PDOException $e ) {
     echo "Napaka pri tabeli: " . $e->getMessage();
   }

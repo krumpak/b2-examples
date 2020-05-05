@@ -4,10 +4,10 @@
   }
 
   try {
-    $sql = $conn->prepare("SELECT * FROM udelezenec02.imdb");
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE status = 1" );
     $sql->execute();
     $array = $sql->fetchAll();
-  } catch (PDOException $e ) {
+  } catch ( PDOException $e ) {
     echo "Napaka pri tabeli: " . $e->getMessage();
   }
 
@@ -22,7 +22,7 @@ Cel seznam
       <td><?= $igralec['ime'] ?></td>
       <td><?= $igralec['priimek'] ?></td>
       <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= $igralec['id']; ?>">Preberi več</a></td>
-      <td><a href="<?= getvar('APP_URL'); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">Uredi</a></td>
+      <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">Uredi</a></td>
       <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">Izbriši</a></td>
     </tr>
   <?php endforeach; ?>
