@@ -26,16 +26,51 @@ Cel seznam
 
 ?>
 
-    <table>
-      <?php foreach ( $array as $index => $igralec ) : ?>
+    <table border="1">
+      <tr>
+        <th>#</th>
+        <th>Ime</th>
+        <th>Priimek</th>
+        <th>Preberi več</th>
+        <th>uredi</th>
+        <th>Izbriši</th>
+      </tr>
+      <?php
+        $js = '';
+
+        foreach ( $array as $index => $igralec ) : ?>
         <tr>
           <td><?= $index + 1; ?></td>
           <td><?= $igralec['ime'] ?></td>
           <td><?= $igralec['priimek'] ?></td>
           <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= $igralec['id']; ?>">Preberi več</a></td>
           <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">Uredi</a></td>
-          <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">Izbriši</a></td>
+          <td>
+            <button id="izbrisi-<?= $index; ?>">&#128465;</button>
+            <a id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">&#10004;</a>
+            <button id="izbrisi-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
+          </td>
         </tr>
-      <?php endforeach; ?>
+      <?php
+
+      $js .= '
+        $("#izbrisi-'.$index.'").click(function () {
+          $("#izbrisi-'.$index.'").hide();
+          $("#izbrisi-ok-'.$index.'").show();
+          $("#izbrisi-cancel-'.$index.'").show();
+        });
+        $("#izbrisi-cancel-'.$index.'").click(function () {
+          $("#izbrisi-'.$index.'").show();
+          $("#izbrisi-ok-'.$index.'").hide();
+          $("#izbrisi-cancel-'.$index.'").hide();
+        });
+        ';
+
+      endforeach; ?>
     </table>
+    <script>
+      $(function () {
+        <?= $js; ?>
+      });
+    </script>
   <?php endif; ?>
