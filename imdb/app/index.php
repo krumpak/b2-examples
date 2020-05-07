@@ -27,6 +27,9 @@
 </head>
 <body>
 <a href="<?= getvar( 'APP_URL' ); ?>/app/">Seznam</a>
+|
+<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=bin">Smetnjak</a>
+|
 <a href="<?= getvar( 'APP_URL' ); ?>/app/?task=add">Dodaj novega igralca/igralko</a>
 <hr>
 <br>
@@ -44,9 +47,21 @@
 
     include_once 'izbrisi.php';
 
+  elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'revert' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+
+    include_once 'povrni.php';
+
+  elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'destroy' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+
+    include_once 'unici.php';
+
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'add' ) :
 
     include_once 'dodaj.php';
+
+  elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'bin' ) :
+
+    include_once 'smetnjak.php';
 
   else :
 
