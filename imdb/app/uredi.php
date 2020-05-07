@@ -44,17 +44,17 @@ Uredi podatke igralca/igrallke
 <button id="izbrisi-cancel" style="display: none;">&#10006;</button>
 <script>
   $(function () {
-    $("#izbrisi").click(function () {
-      $("#izbrisi").hide();
-      $("#izbrisi-ok").show();
-      $("#izbrisi-cancel").show();
-    });
-    $("#izbrisi-cancel").click(function () {
-      $("#izbrisi").show();
-      $("#izbrisi-ok").hide();
-      $("#izbrisi-cancel").hide();
-    });
-  });
+    $('#izbrisi').click(function () {
+      $('#izbrisi').hide();
+      $('#izbrisi-ok').show();
+      $('#izbrisi-cancel').show();
+    })
+    $('#izbrisi-cancel').click(function () {
+      $('#izbrisi').show();
+      $('#izbrisi-ok').hide();
+      $('#izbrisi-cancel').hide();
+    })
+  })
 </script>
 
 <form method="POST">

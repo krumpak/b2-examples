@@ -13,18 +13,18 @@
 
 ?>
 
-<!-- Cel seznam vseh igralcev -->
-Cel seznam
+  <!-- Cel seznam vseh igralcev -->
+  Cel seznam
 
 <?php
 
-  if( count($array) === 0 ) :
+  if ( count( $array ) === 0 ) :
 
     echo "<br>Seznam je prazen!";
 
   else :
 
-?>
+    ?>
 
     <table border="1">
       <tr>
@@ -39,38 +39,38 @@ Cel seznam
         $js = '';
 
         foreach ( $array as $index => $igralec ) : ?>
-        <tr>
-          <td><?= $index + 1; ?></td>
-          <td><?= $igralec['ime'] ?></td>
-          <td><?= $igralec['priimek'] ?></td>
-          <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= $igralec['id']; ?>">&#8689;</a></td>
-          <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">&#9998;</a></td>
-          <td>
-            <button id="izbrisi-<?= $index; ?>">&#128465;</button>
-            <a id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">&#10004;</a>
-            <button id="izbrisi-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
-          </td>
-        </tr>
-      <?php
+          <tr>
+            <td><?= $index + 1; ?></td>
+            <td><?= $igralec['ime'] ?></td>
+            <td><?= $igralec['priimek'] ?></td>
+            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= $igralec['id']; ?>">&#8689;</a></td>
+            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">&#9998;</a></td>
+            <td>
+              <button id="izbrisi-<?= $index; ?>">&#128465;</button>
+              <a id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">&#10004;</a>
+              <button id="izbrisi-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
+            </td>
+          </tr>
+          <?php
 
-      $js .= '
-        $("#izbrisi-'.$index.'").click(function () {
-          $("#izbrisi-'.$index.'").hide();
-          $("#izbrisi-ok-'.$index.'").show();
-          $("#izbrisi-cancel-'.$index.'").show();
+          $js .= '
+        $("#izbrisi-' . $index . '").click(function () {
+          $("#izbrisi-' . $index . '").hide();
+          $("#izbrisi-ok-' . $index . '").show();
+          $("#izbrisi-cancel-' . $index . '").show();
         });
-        $("#izbrisi-cancel-'.$index.'").click(function () {
-          $("#izbrisi-'.$index.'").show();
-          $("#izbrisi-ok-'.$index.'").hide();
-          $("#izbrisi-cancel-'.$index.'").hide();
+        $("#izbrisi-cancel-' . $index . '").click(function () {
+          $("#izbrisi-' . $index . '").show();
+          $("#izbrisi-ok-' . $index . '").hide();
+          $("#izbrisi-cancel-' . $index . '").hide();
         });
         ';
 
-      endforeach; ?>
+        endforeach; ?>
     </table>
     <script>
       $(function () {
         <?= $js; ?>
-      });
+      })
     </script>
   <?php endif; ?>

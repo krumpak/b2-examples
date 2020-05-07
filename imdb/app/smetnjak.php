@@ -54,28 +54,28 @@ Smetnjak
             </td>
           </tr>
 
-        <?php
+          <?php
 
           $js .= '
-        $("#povrni-'.$index.'").click(function () {
-          $("#povrni-'.$index.'").hide();
-          $("#povrni-ok-'.$index.'").show();
-          $("#povrni-cancel-'.$index.'").show();
+        $("#povrni-' . $index . '").click(function () {
+          $("#povrni-' . $index . '").hide();
+          $("#povrni-ok-' . $index . '").show();
+          $("#povrni-cancel-' . $index . '").show();
         });
-        $("#povrni-cancel-'.$index.'").click(function () {
-          $("#povrni-'.$index.'").show();
-          $("#povrni-ok-'.$index.'").hide();
-          $("#povrni-cancel-'.$index.'").hide();
+        $("#povrni-cancel-' . $index . '").click(function () {
+          $("#povrni-' . $index . '").show();
+          $("#povrni-ok-' . $index . '").hide();
+          $("#povrni-cancel-' . $index . '").hide();
         });
-        $("#unici-'.$index.'").click(function () {
-          $("#unici-'.$index.'").hide();
-          $("#unici-ok-'.$index.'").show();
-          $("#unici-cancel-'.$index.'").show();
+        $("#unici-' . $index . '").click(function () {
+          $("#unici-' . $index . '").hide();
+          $("#unici-ok-' . $index . '").show();
+          $("#unici-cancel-' . $index . '").show();
         });
-        $("#unici-cancel-'.$index.'").click(function () {
-          $("#unici-'.$index.'").show();
-          $("#unici-ok-'.$index.'").hide();
-          $("#unici-cancel-'.$index.'").hide();
+        $("#unici-cancel-' . $index . '").click(function () {
+          $("#unici-' . $index . '").show();
+          $("#unici-ok-' . $index . '").hide();
+          $("#unici-cancel-' . $index . '").hide();
         });
         ';
 

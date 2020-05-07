@@ -20,18 +20,18 @@
 
   endif; ?>
 
-    obrazec za vnos nove osebe
-    <form method="POST">
-      <input type="hidden" name="zeton" id="zeton" value="">
-      ime: <input type="text" name="ime" id="ime" required><br>
-      priimek: <input type="text" name="priimek" id="priimek" required><br>
-      kraj: <input type="text" name="kraj" id="kraj" required><br>
-      zanri: <input type="text" name="zanri" id="zanri" required><br>
-      ocena: <input type="number" name="ocena" id="ocena" min="0" max="10"><br>
-      filmi: <input type="text" name="filmi" id="filmi" required><br>
-      nagrade: <input type="text" name="nagrade" id="nagrade" required><br>
-      <br>
-      <br>
-      <input type="submit" value="Dodaj">
-    </form>
+obrazec za vnos nove osebe
+<form method="POST">
+  <input type="hidden" name="zeton" id="zeton" value="">
+  ime: <input type="text" name="ime" id="ime" required><br>
+  priimek: <input type="text" name="priimek" id="priimek" required><br>
+  kraj: <input type="text" name="kraj" id="kraj" required><br>
+  zanri: <input type="text" name="zanri" id="zanri" required><br>
+  ocena: <input type="number" name="ocena" id="ocena" min="0" max="10"><br>
+  filmi: <input type="text" name="filmi" id="filmi" required><br>
+  nagrade: <input type="text" name="nagrade" id="nagrade" required><br>
+  <br>
+  <br>
+  <input type="submit" value="Dodaj">
+</form>
 
