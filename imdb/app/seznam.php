@@ -15,15 +15,27 @@
 
 <!-- Cel seznam vseh igralcev -->
 Cel seznam
-<table>
-  <?php foreach ( $array as $index => $igralec ) : ?>
-    <tr>
-      <td><?= $index + 1; ?></td>
-      <td><?= $igralec['ime'] ?></td>
-      <td><?= $igralec['priimek'] ?></td>
-      <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= $igralec['id']; ?>">Preberi več</a></td>
-      <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">Uredi</a></td>
-      <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">Izbriši</a></td>
-    </tr>
-  <?php endforeach; ?>
-</table>
+
+<?php
+
+  if( count($array) === 0 ) :
+
+    echo "<br>Seznam je prazen!";
+
+  else :
+
+?>
+
+    <table>
+      <?php foreach ( $array as $index => $igralec ) : ?>
+        <tr>
+          <td><?= $index + 1; ?></td>
+          <td><?= $igralec['ime'] ?></td>
+          <td><?= $igralec['priimek'] ?></td>
+          <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= $igralec['id']; ?>">Preberi več</a></td>
+          <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">Uredi</a></td>
+          <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">Izbriši</a></td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
+  <?php endif; ?>
