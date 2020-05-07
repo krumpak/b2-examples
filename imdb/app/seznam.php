@@ -4,7 +4,7 @@
   }
 
   try {
-    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE status = 1" );
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE status = 1 ORDER BY priimek ASC" );
     $sql->execute();
     $array = $sql->fetchAll();
   } catch ( PDOException $e ) {
