@@ -44,12 +44,12 @@ Smetnjak
             <td><?= $igralec['priimek'] ?></td>
             <td>
               <button id="povrni-<?= $index; ?>">&#x27F2;</button>
-              <a id="povrni-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=revert&id=<?= $igralec['id']; ?>">&#10004;</a>
+              <a id="povrni-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/revert/<?= $igralec['id']; ?>">&#10004;</a>
               <button id="povrni-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
             </td>
             <td>
               <button id="unici-<?= $index; ?>">&#128465;</button>
-              <a id="unici-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=destroy&id=<?= $igralec['id']; ?>">&#10004;</a>
+              <a id="unici-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/destroy/<?= $igralec['id']; ?>">&#10004;</a>
               <button id="unici-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
             </td>
           </tr>

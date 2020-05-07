@@ -28,9 +28,9 @@
 <body>
 <a href="<?= getvar( 'APP_URL' ); ?>/app/">Seznam</a>
 |
-<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=bin">Smetnjak</a>
+<a href="<?= getvar( 'APP_URL' ); ?>/app/bin">Smetnjak</a>
 |
-<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=add">Dodaj novega igralca/igralko</a>
+<a href="<?= getvar( 'APP_URL' ); ?>/app/add">Dodaj novega igralca/igralko</a>
 <hr>
 <br>
 <?php

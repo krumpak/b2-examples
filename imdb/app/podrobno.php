@@ -21,10 +21,10 @@
 <!-- Več o posamezneme igralcu ali igralki -->
 Samo en igralec/igralka
 |
-<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $en['id']; ?>">&#9998;</a>
+<a href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $en['id']; ?>">&#9998;</a>
 |
 <button id="izbrisi">&#128465;</button>
-<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $en['id']; ?>">&#10004;</a>
+<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $en['id']; ?>">&#10004;</a>
 <button id="izbrisi-cancel" style="display: none;">&#10006;</button>
 <script>
   $(function () {

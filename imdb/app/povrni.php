@@ -8,7 +8,7 @@
     $delete->execute( array( ":id" => intval( $_GET['id'] ) ) );
 
     // Po uspšenem izbrisu me premakni ne seznam vseh
-    header( 'Location: ' . getvar( 'APP_URL' ) . '/app/?task=bin' );
+    header( 'Location: ' . getvar( 'APP_URL' ) . '/app/bin' );
 
   } catch ( PDOException $e ) {
     echo "Napaka pri tabeli: " . $e->getMessage();

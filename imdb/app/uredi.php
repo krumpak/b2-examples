@@ -37,10 +37,10 @@
 ?>
 Uredi podatke igralca/igrallke
 |
-<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= intval( $_GET['id'] ); ?>">&#8689;</a>
+<a href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= intval( $_GET['id'] ); ?>">&#8689;</a>
 |
 <button id="izbrisi">&#128465;</button>
-<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= intval( $_GET['id'] ); ?>">&#10004;</a>
+<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= intval( $_GET['id'] ); ?>">&#10004;</a>
 <button id="izbrisi-cancel" style="display: none;">&#10006;</button>
 <script>
   $(function () {

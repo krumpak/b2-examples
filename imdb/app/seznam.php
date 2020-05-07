@@ -43,11 +43,11 @@
             <td><?= $index + 1; ?></td>
             <td><?= $igralec['ime'] ?></td>
             <td><?= $igralec['priimek'] ?></td>
-            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= $igralec['id']; ?>">&#8689;</a></td>
-            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $igralec['id']; ?>">&#9998;</a></td>
+            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= $igralec['id']; ?>">&#8689;</a></td>
+            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $igralec['id']; ?>">&#9998;</a></td>
             <td>
               <button id="izbrisi-<?= $index; ?>">&#128465;</button>
-              <a id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $igralec['id']; ?>">&#10004;</a>
+              <a id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $igralec['id']; ?>">&#10004;</a>
               <button id="izbrisi-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
             </td>
           </tr>
