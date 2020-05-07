@@ -20,8 +20,27 @@
 ?>
 <!-- Več o posamezneme igralcu ali igralki -->
 Samo en igralec/igralka
-[<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $en['id']; ?>">uredi</a>]
-[<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $en['id']; ?>">Izbriši</a>]
+|
+<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=edit&id=<?= $en['id']; ?>">&#9998;</a>
+|
+<button id="izbrisi">&#128465;</button>
+<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= $en['id']; ?>">&#10004;</a>
+<button id="izbrisi-cancel" style="display: none;">&#10006;</button>
+<script>
+  $(function () {
+    $("#izbrisi").click(function () {
+      $("#izbrisi").hide();
+      $("#izbrisi-ok").show();
+      $("#izbrisi-cancel").show();
+    });
+    $("#izbrisi-cancel").click(function () {
+      $("#izbrisi").show();
+      $("#izbrisi-ok").hide();
+      $("#izbrisi-cancel").hide();
+    });
+  });
+</script>
+
 <table>
   <tr>
     <td>Ime:</td>

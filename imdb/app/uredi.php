@@ -36,8 +36,27 @@
   }
 ?>
 Uredi podatke igralca/igrallke
-[<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= intval( $_GET['id'] ); ?>">zapri urejanje</a>]
-[<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= intval( $_GET['id'] ); ?>">Izbriši</a>]
+|
+<a href="<?= getvar( 'APP_URL' ); ?>/app/?task=view&id=<?= intval( $_GET['id'] ); ?>">&#8689;</a>
+|
+<button id="izbrisi">&#128465;</button>
+<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/?task=delete&id=<?= intval( $_GET['id'] ); ?>">&#10004;</a>
+<button id="izbrisi-cancel" style="display: none;">&#10006;</button>
+<script>
+  $(function () {
+    $("#izbrisi").click(function () {
+      $("#izbrisi").hide();
+      $("#izbrisi-ok").show();
+      $("#izbrisi-cancel").show();
+    });
+    $("#izbrisi-cancel").click(function () {
+      $("#izbrisi").show();
+      $("#izbrisi-ok").hide();
+      $("#izbrisi-cancel").hide();
+    });
+  });
+</script>
+
 <form method="POST">
   <input type="hidden" name="zeton" id="zeton" value="">
   <input type="hidden" name="id" id="id" value="<?= $en['id']; ?>">
