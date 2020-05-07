@@ -16,8 +16,9 @@
       ':nagrade' => $_POST['nagrade']
     ) );
 
-    echo "New record created successfully";
-  else : ?>
+    echo "New record created successfully<br>";
+
+  endif; ?>
 
     obrazec za vnos nove osebe
     <form method="POST">
@@ -33,6 +34,4 @@
       <br>
       <input type="submit" value="Dodaj">
     </form>
-
-  <?php endif; ?>
 
