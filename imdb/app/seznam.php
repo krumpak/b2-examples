@@ -8,7 +8,10 @@
     $sql->execute();
     $array = $sql->fetchAll();
   } catch ( PDOException $e ) {
-    echo "Napaka pri tabeli: " . $e->getMessage();
+    $_SESSION['message'] = array(
+      'text' => $e->getMessage(),
+      'type' => 'error'
+    );
   }
 
 ?>

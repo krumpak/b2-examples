@@ -17,8 +17,17 @@
         ":filmi"   => $_POST['filmi'],
         ":nagrade" => $_POST['nagrade']
       ) );
+
+      $_SESSION['message'] = array(
+        'text' => 'Uspešno posodobljeni podatki',
+        'type' => 'success'
+      );
+
     } catch ( PDOException $e ) {
-      echo "Napaka pri tabeli: " . $e->getMessage();
+      $_SESSION['message'] = array(
+        'text' => $e->getMessage(),
+        'type' => 'error'
+      );
     }
 
   endif;
@@ -32,7 +41,10 @@
       header( 'Location: ' . getvar( 'APP_URL' ) . '/app/' );
     }
   } catch ( PDOException $e ) {
-    echo "Napaka pri tabeli: " . $e->getMessage();
+    $_SESSION['message'] = array(
+      'text' => $e->getMessage(),
+      'type' => 'error'
+    );
   }
 ?>
 Uredi podatke igralca/igrallke

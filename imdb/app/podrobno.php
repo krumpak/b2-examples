@@ -10,11 +10,19 @@
     $en = $sql->fetch();
 
     if ( empty( $en ) ) {
+      $_SESSION['message'] = array(
+        'text' => 'Ni podatkov',
+        'type' => 'error'
+      );
+
       header( 'Location: ' . getvar( 'APP_URL' ) . '/app/' );
     }
 
   } catch ( PDOException $e ) {
-    echo "Napaka pri tabeli: " . $e->getMessage();
+    $_SESSION['message'] = array(
+      'text' => $e->getMessage(),
+      'type' => 'error'
+    );
   }
 
 ?>

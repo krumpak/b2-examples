@@ -7,11 +7,19 @@
     $delete = $conn->prepare( "DELETE FROM udelezenec02.imdb WHERE id = :id AND status = 0" );
     $delete->execute( array( ":id" => intval( $_GET['id'] ) ) );
 
+    $_SESSION['message'] = array(
+      'text' => 'Uspešno uničeni podatki',
+      'type' => 'success'
+    );
+
     // Po uspšenem izbrisu me premakni ne seznam vseh
     header( 'Location: ' . getvar( 'APP_URL' ) . '/app/bin' );
 
   } catch ( PDOException $e ) {
-    echo "Napaka pri tabeli: " . $e->getMessage();
+    $_SESSION['message'] = array(
+      'text' => $e->getMessage(),
+      'type' => 'error'
+    );
   }
 
 ?>

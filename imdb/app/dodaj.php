@@ -16,7 +16,10 @@
       ':nagrade' => $_POST['nagrade']
     ) );
 
-    echo "New record created successfully<br>";
+    $_SESSION['message'] = array(
+      'text' => 'Uspešno vnešeni podatki',
+      'type' => 'success'
+    );
 
   endif; ?>
 

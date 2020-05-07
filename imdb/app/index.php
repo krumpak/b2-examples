@@ -1,6 +1,12 @@
 <?php
   define( 'varovalka', true );
 
+  if ( session_status() == PHP_SESSION_NONE ) {
+    session_start();
+  }
+
+  $cleaning = false;
+
   include_once './shared.php';
 
   $host     = getVar( 'HOST' );
@@ -12,7 +18,10 @@
     $conn = new PDO( "mysql:host=$host;dbname=$db", $username, $password, array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8" ) );
     $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
   } catch ( PDOException $e ) {
-    echo "Connection failed: " . $e->getMessage();
+    $_SESSION['message'] = array(
+      'text' => $e->getMessage(),
+      'type' => 'error'
+    );
   }
 
 ?>
@@ -34,14 +43,17 @@
 <hr>
 <br>
 <?php
-
   if ( isset( $_GET['task'] ) && $_GET['task'] === 'view' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
     include_once 'podrobno.php';
 
+    $cleaning = true;
+
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'edit' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
     include_once 'uredi.php';
+
+    $cleaning = true;
 
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'delete' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
@@ -59,15 +71,59 @@
 
     include_once 'dodaj.php';
 
+    $cleaning = true;
+
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'bin' ) :
 
     include_once 'smetnjak.php';
+
+    $cleaning = true;
 
   else :
 
     include_once 'seznam.php';
 
+    $cleaning = true;
+
   endif; ?>
+
+<?php if ( isset( $_SESSION['message'] ) ) : ?>
+  <style>
+    .alert {
+      position:       fixed;
+      top:            0;
+      left:           0;
+      right:          0;
+      text-align:     center;
+      pointer-events: none;
+    }
+    .alert span {
+      margin:           0 auto;
+      display:          inline-block;
+      padding:          1em 2em;
+      background-color: white;
+      box-shadow:       1px 1px 3px 2px rgba(0, 0, 0, .3);
+    }
+    .alert.success { color: green; }
+    .alert.error { color: red; }
+  </style>
+  <div class="alert <?= $_SESSION['message']['type'] ?>">
+    <span>
+      <?= $_SESSION['message']['text'] ?>
+    </span>
+  </div>
+  <script>
+    setTimeout(function () {
+      $('.alert').hide()
+    }, 5000)
+  </script>
+  <?php
+
+  if ( $cleaning ) {
+    unset( $_SESSION['message'] );
+  }
+endif;
+?>
 
 </body>
 </html>
