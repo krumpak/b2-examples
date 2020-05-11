@@ -1,4 +1,14 @@
-<Files .env>
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)$ index.php?task=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)$ index.php?task=$1&id=$2 [L]
+
+<FilesMatch "^\.">
     Order allow,deny
     Deny from all
-</Files>
+</FilesMatch>
