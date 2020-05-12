@@ -4,7 +4,7 @@
   }
 
   try {
-    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE status = 0 ORDER BY priimek ASC;" );
+    $sql = $conn->prepare( "SELECT id, ime, priimek, created_at, updated_at FROM udelezenec02.imdb WHERE status = 0 ORDER BY priimek ASC;" );
     $sql->execute();
     $array = $sql->fetchAll();
   } catch ( PDOException $e ) {
@@ -35,6 +35,8 @@ Smetnjak
         <th>Priimek</th>
         <th>Povrni</th>
         <th>Uniči</th>
+        <th>Ustvarjeno</th>
+        <th>Posodobljeno</th>
       </tr>
 
       <?php
@@ -45,6 +47,8 @@ Smetnjak
             <td><?= $index + 1; ?></td>
             <td><?= $igralec['ime'] ?></td>
             <td><?= $igralec['priimek'] ?></td>
+            <td><?= date( 'j. n. Y, G:i:s', strtotime( $igralec['created_at'] ) ) ?></td>
+            <td><?= $igralec['updated_at'] !== null ? date( 'j. n. Y, G:i:s', strtotime( $igralec['updated_at'] ) ) : '&nbps;' ?></td>
             <td>
               <button id="povrni-<?= $index; ?>">&#x27F2;</button>
               <a id="povrni-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/revert/<?= $igralec['id']; ?>">&#10004;</a>
