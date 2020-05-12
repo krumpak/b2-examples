@@ -5,7 +5,7 @@
     session_start();
   }
 
-  $cleaning = false;
+  $clearMessage = false;
 
   include_once './shared.php';
 
@@ -47,13 +47,13 @@
 
     include_once 'podrobno.php';
 
-    $cleaning = true;
+    $clearMessage = true;
 
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'edit' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
     include_once 'uredi.php';
 
-    $cleaning = true;
+    $clearMessage = true;
 
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'delete' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
@@ -71,19 +71,19 @@
 
     include_once 'dodaj.php';
 
-    $cleaning = true;
+    $clearMessage = true;
 
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'bin' ) :
 
     include_once 'smetnjak.php';
 
-    $cleaning = true;
+    $clearMessage = true;
 
   else :
 
     include_once 'seznam.php';
 
-    $cleaning = true;
+    $clearMessage = true;
 
   endif; ?>
 
@@ -119,7 +119,7 @@
   </script>
   <?php
 
-  if ( $cleaning ) {
+  if ( $clearMessage ) {
     unset( $_SESSION['message'] );
   }
 endif;
