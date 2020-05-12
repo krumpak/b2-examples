@@ -69,8 +69,6 @@
 
     include_once 'dodaj.php';
 
-    $clearMessage = true;
-
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'bin' ) :
 
     include_once 'smetnjak.php';
