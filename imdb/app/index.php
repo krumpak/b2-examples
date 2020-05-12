@@ -53,8 +53,6 @@
 
     include_once 'uredi.php';
 
-    $clearMessage = true;
-
   elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'delete' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
     include_once 'izbrisi.php';

@@ -3,9 +3,8 @@
     die( '403' );
   }
 
-
   try {
-    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE id = :id AND status = 1 LIMIT 1" );
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb INNER JOIN udelezenec02.imdb_kraji ON imdb.kraj_id=imdb_kraji.kraj_id WHERE id = :id AND status = 1 LIMIT 1" );
     $sql->execute( array( ':id' => intval( $_GET['id'] ) ) );
     $en = $sql->fetch();
 
@@ -57,6 +56,10 @@ Samo en igralec/igralka
   <tr>
     <td>Priimek:</td>
     <td><?= $en['priimek']; ?></td>
+  </tr>
+  <tr>
+    <td>Kraj:</td>
+    <td><?= $en['kraj']; ?></td>
   </tr>
   <tr>
     <td>Žanri:</td>
