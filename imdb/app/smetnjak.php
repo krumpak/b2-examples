@@ -4,7 +4,7 @@
   }
 
   try {
-    $sql = $conn->prepare( "SELECT id, ime, priimek, created_at, updated_at FROM udelezenec02.imdb WHERE status = 0 ORDER BY priimek ASC;" );
+    $sql = $conn->prepare( "SELECT id, ime, priimek, created_at, updated_at FROM udelezenec02.imdb_osebe WHERE status = 0 ORDER BY priimek ASC;" );
     $sql->execute();
     $array = $sql->fetchAll();
   } catch ( PDOException $e ) {

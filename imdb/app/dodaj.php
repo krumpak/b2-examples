@@ -4,7 +4,7 @@
   }
 
   if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) :
-    $insert = $conn->prepare( "INSERT INTO udelezenec02.imdb (ime, priimek, kraj, zanri, ocena, filmi, nagrade) VALUES (:ime, :priimek, :kraj, :zanri, :ocena, :filmi, :nagrade);" );
+    $insert = $conn->prepare( "INSERT INTO udelezenec02.imdb_osebe (ime, priimek, kraj, zanri, ocena, filmi, nagrade) VALUES (:ime, :priimek, :kraj, :zanri, :ocena, :filmi, :nagrade);" );
 
     $insert->execute( array(
       ':ime'     => $_POST['ime'],

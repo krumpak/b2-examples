@@ -4,7 +4,7 @@
   }
 
   try {
-    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb INNER JOIN udelezenec02.imdb_kraji ON imdb.kraj_id=imdb_kraji.kraj_id WHERE id = :id AND status = 1 LIMIT 1" );
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb_osebe INNER JOIN udelezenec02.imdb_kraji ON imdb_osebe.kraj_id=imdb_kraji.kraj_id WHERE id = :id AND status = 1 LIMIT 1" );
     $sql->execute( array( ':id' => intval( $_GET['id'] ) ) );
     $en = $sql->fetch();
 

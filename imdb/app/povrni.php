@@ -4,7 +4,7 @@
   }
 
   try {
-    $delete = $conn->prepare( "UPDATE udelezenec02.imdb SET status=1, deleted_at=now() WHERE id = :id AND status = 0" );
+    $delete = $conn->prepare( "UPDATE udelezenec02.imdb_osebe SET status=1, deleted_at=now() WHERE id = :id AND status = 0" );
     $delete->execute( array( ":id" => intval( $_GET['id'] ) ) );
 
     $_SESSION['message'] = array(

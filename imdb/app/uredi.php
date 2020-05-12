@@ -6,7 +6,7 @@
   if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) :
 
     try {
-      $update = $conn->prepare( "UPDATE udelezenec02.imdb SET ime=:ime, priimek=:priimek, kraj_id=:kraj, zanri=:zanri, ocena=:ocena, filmi=:filmi, nagrade=:nagrade, updated_at=now() WHERE id = :id AND status = 1" );
+      $update = $conn->prepare( "UPDATE udelezenec02.imdb_osebe SET ime=:ime, priimek=:priimek, kraj_id=:kraj, zanri=:zanri, ocena=:ocena, filmi=:filmi, nagrade=:nagrade, updated_at=now() WHERE id = :id AND status = 1" );
       $update->execute( array(
         ":id"      => intval( $_POST['id'] ),
         ":ime"     => $_POST['ime'],
@@ -34,7 +34,7 @@
   endif;
 
   try {
-    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb WHERE id = :id AND status = 1 LIMIT 1" );
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb_osebe WHERE id = :id AND status = 1 LIMIT 1" );
     $sql->execute( array( ':id' => intval( $_GET['id'] ) ) );
     $en = $sql->fetch();
 
