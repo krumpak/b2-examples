@@ -50,14 +50,14 @@
   <div class="form-group row">
     <label for="email" class="col-sm-2 col-form-label">Email:</label>
     <div class="col-sm-10">
-      <input class="form-control" type="email" name="email" id="email" required value="avtor@email.si">
+      <input class="form-control" type="email" name="email" id="email" required>
     </div>
   </div>
 
   <div class="form-group row">
     <label for="geslo" class="col-sm-2 col-form-label">Geslo:</label>
     <div class="col-sm-10">
-      <input class="form-control" type="text" name="geslo" id="geslo" required>
+      <input class="form-control" type="password" name="geslo" id="geslo" required>
     </div>
   </div>
   <br>
