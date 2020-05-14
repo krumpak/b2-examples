@@ -25,7 +25,7 @@
 
         header( 'Location: ' . getvar( 'APP_URL' ) . '/app/' );
       } else {
-        $_SESSION['token'] = sha1( date(DATE_RFC2822) . $uporabnik['created_at'] );
+        $_SESSION['token'] = sha1( date( DATE_RFC2822 ) . $uporabnik['created_at'] );
 
         $_SESSION['message'] = array(
           'text' => 'Pozdravljen ' . $uporabnik['uporabnik'],
