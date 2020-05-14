@@ -55,13 +55,11 @@
     );
   }
 ?>
-Uredi podatke igralca/igrallke
-|
-<a href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= intval( $_GET['id'] ); ?>">&#8689;</a>
-|
-<button id="izbrisi">&#128465;</button>
-<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= intval( $_GET['id'] ); ?>">&#10004;</a>
-<button id="izbrisi-cancel" style="display: none;">&#10006;</button>
+<h2>Uredi podatke igralca/igrallke</h2>
+<a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= intval( $_GET['id'] ); ?>">&#8689;</a>
+<button class="btn btn-outline-danger btn-sm" id="izbrisi">&#128465;</button>
+<a class="btn btn-danger btn-sm" id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= intval( $_GET['id'] ); ?>">&#10004;</a>
+<button class="btn btn-primary btn-sm" id="izbrisi-cancel" style="display: none;">&#10006;</button>
 <script>
   $(function () {
     $('#izbrisi').click(function () {
@@ -80,19 +78,73 @@ Uredi podatke igralca/igrallke
 <form method="POST">
   <input type="hidden" name="zeton" id="zeton" value="">
   <input type="hidden" name="id" id="id" value="<?= $en['id']; ?>">
-  ime: <input type="text" name="ime" id="ime" value="<?= $en['ime']; ?>" required><br>
-  priimek: <input type="text" name="priimek" id="priimek" value="<?= $en['priimek']; ?>" required><br>
-  kraj: <select name="kraj" id="kraj">
-    <?php foreach ( $kraji as $kraj ) : ?>
-      <option value="<?= $kraj['kraj_id'] ?>" <?= $en['kraj_id'] == $kraj['kraj_id'] ? 'selected' : ''; ?>><?= $kraj['kraj'] ?></option>
-    <?php endforeach; ?>
-  </select><br>
-  zanri: <input type="text" name="zanri" id="zanri" value="<?= $en['zanri']; ?>" required><br>
-  ocena: <input type="number" name="ocena" id="ocena" min="0" max="10" value="<?= $en['ocena']; ?>"><br>
-  filmi: <input type="text" name="filmi" id="filmi" value="<?= $en['filmi']; ?>" required><br>
-  nagrade: <input type="text" name="nagrade" id="nagrade" value="<?= $en['nagrade']; ?>" required><br>
-  ustvarjeno: <input type="text" value="<?= date( 'j. n. Y, G:i:s', strtotime( $en['created_at'] ) ); ?>" disabled><br>
-  posodobljeno: <input type="text" value="<?= date( 'j. n. Y, G:i:s', strtotime( $en['updated_at'] ) ); ?>" disabled><br>
+
+  <div class="form-group row">
+    <label for="ime" class="col-sm-2 col-form-label">Ime:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="ime" id="ime" value="<?= $en['ime']; ?>" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="priimek" class="col-sm-2 col-form-label">Priimek:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="priimek" id="priimek" value="<?= $en['priimek']; ?>" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="kraj" class="col-sm-2 col-form-label">Kraj:</label>
+    <div class="col-sm-10">
+      <select class="form-control" name="kraj" id="kraj">
+        <?php foreach ( $kraji as $kraj ) : ?>
+          <option value="<?= $kraj['kraj_id'] ?>" <?= $en['kraj_id'] == $kraj['kraj_id'] ? 'selected' : ''; ?>><?= $kraj['kraj'] ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="zanri" class="col-sm-2 col-form-label">Žanri:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="zanri" id="zanri" value="<?= $en['zanri']; ?>" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="ocena" class="col-sm-2 col-form-label">Ocena:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="number" name="ocena" id="ocena" min="0" max="10" value="<?= $en['ocena']; ?>">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="filmi" class="col-sm-2 col-form-label">Filmi:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="filmi" id="filmi" value="<?= $en['filmi']; ?>" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="nagrade" class="col-sm-2 col-form-label">Nagrade:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="nagrade" id="nagrade" value="<?= $en['nagrade']; ?>" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="created_at" class="col-sm-2 col-form-label">Ustvarjeno:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="created_at" id="created_at" value="<?= date( 'j. n. Y, G:i:s', strtotime( $en['created_at'] ) ); ?>" disabled>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="updated_at" class="col-sm-2 col-form-label">Posodobljeno:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="updated_at" id="updated_at" value="<?= date( 'j. n. Y, G:i:s', strtotime( $en['updated_at'] ) ); ?>" disabled>
+    </div>
+  </div>
   <br>
-  <input type="submit" value="Posodobi">
+  <input class="btn btn-primary btn-block btn-lg" type="submit" value="Posodobi">
 </form>

@@ -52,22 +52,65 @@
 
 ?>
 
-obrazec za vnos nove osebe
+<h2>Vnos nove osebe</h2>
+
 <form method="POST">
   <input type="hidden" name="zeton" id="zeton" value="">
-  ime: <input type="text" name="ime" id="ime" required><br>
-  priimek: <input type="text" name="priimek" id="priimek" required><br>
-  kraj: <select name="kraj" id="kraj">
-    <option value="" selected disabled required>--- izberi kraj ---</option>
-    <?php foreach ( $kraji as $kraj ) : ?>
-      <option value="<?= $kraj['kraj_id']; ?>"><?= $kraj['kraj']; ?></option>
-    <?php endforeach; ?>
-  </select><br>
-  zanri: <input type="text" name="zanri" id="zanri" required><br>
-  ocena: <input type="number" name="ocena" id="ocena" min="0" max="10"><br>
-  filmi: <input type="text" name="filmi" id="filmi" required><br>
-  nagrade: <input type="text" name="nagrade" id="nagrade" required><br>
+
+  <div class="form-group row">
+    <label for="ime" class="col-sm-2 col-form-label">Ime:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="ime" id="ime" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="priimek" class="col-sm-2 col-form-label">Priimek:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="priimek" id="priimek" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="kraj" class="col-sm-2 col-form-label">Kraj:</label>
+    <div class="col-sm-10">
+      <select class="form-control" name="kraj" id="kraj">
+        <option value="" selected disabled required>--- izberi kraj ---</option>
+        <?php foreach ( $kraji as $kraj ) : ?>
+          <option value="<?= $kraj['kraj_id']; ?>"><?= $kraj['kraj']; ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="zanri" class="col-sm-2 col-form-label">Žanri:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="zanri" id="zanri" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="priimek" class="col-sm-2 col-form-label">Ocena:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="number" name="ocena" id="ocena" min="0" max="10">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="filmi" class="col-sm-2 col-form-label">Filmi:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="filmi" id="filmi" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="nagrade" class="col-sm-2 col-form-label">Nagrade:</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" name="nagrade" id="nagrade" required>
+    </div>
+  </div>
   <br>
-  <input type="submit" value="Dodaj">
+  <input class="btn btn-primary btn-block btn-lg" type="submit" value="Dodaj">
 </form>
 

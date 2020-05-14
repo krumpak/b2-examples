@@ -13,14 +13,11 @@
       'type' => 'error'
     );
   }
-
 ?>
 
-  <!-- Cel seznam vseh igralcev -->
-  Cel seznam
+  <h2>Seznam igralcev/igralk</h2>
 
 <?php
-
   if ( count( $array ) === 0 ) :
 
     echo "<br>Seznam je prazen!";
@@ -29,7 +26,7 @@
 
     ?>
 
-    <table border="1">
+    <table class="table table-striped table-hover">
       <tr>
         <th>#</th>
         <th>Ime</th>
@@ -46,12 +43,12 @@
             <td><?= $index + 1; ?></td>
             <td><?= $igralec['ime'] ?></td>
             <td><?= $igralec['priimek'] ?></td>
-            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= $igralec['id']; ?>">&#8689;</a></td>
-            <td><a href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $igralec['id']; ?>">&#9998;</a></td>
+            <td><a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= $igralec['id']; ?>">&#8689;</a></td>
+            <td><a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $igralec['id']; ?>">&#9998;</a></td>
             <td>
-              <button id="izbrisi-<?= $index; ?>">&#128465;</button>
-              <a id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $igralec['id']; ?>">&#10004;</a>
-              <button id="izbrisi-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
+              <a class="btn btn-outline-danger btn-sm" id="izbrisi-<?= $index; ?>">&#128465;</a>
+              <a class="btn btn-danger btn-sm" id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $igralec['id']; ?>">&#10004;</a>
+              <a class="btn btn-primary btn-sm" id="izbrisi-cancel-<?= $index; ?>" style="display: none;">&#10006;</a>
             </td>
           </tr>
           <?php

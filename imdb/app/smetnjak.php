@@ -15,7 +15,8 @@
   }
 
 ?>
-Smetnjak
+
+<h2>Smetnjak</h2>
 
 <?php
 
@@ -28,7 +29,7 @@ Smetnjak
     ?>
 
 
-    <table border="1">
+    <table class="table table-striped table-hover">
       <tr>
         <th>#</th>
         <th>Ime</th>
@@ -50,14 +51,14 @@ Smetnjak
             <td><?= date( 'j. n. Y, G:i:s', strtotime( $igralec['created_at'] ) ) ?></td>
             <td><?= $igralec['updated_at'] !== null ? date( 'j. n. Y, G:i:s', strtotime( $igralec['updated_at'] ) ) : '&nbps;' ?></td>
             <td>
-              <button id="povrni-<?= $index; ?>">&#x27F2;</button>
-              <a id="povrni-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/revert/<?= $igralec['id']; ?>">&#10004;</a>
-              <button id="povrni-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
+              <button class="btn btn-outline-success btn-sm" id="povrni-<?= $index; ?>">&#x27F2;</button>
+              <a class="btn btn-success btn-sm" id="povrni-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/revert/<?= $igralec['id']; ?>">&#10004;</a>
+              <button class="btn btn-primary btn-sm" id="povrni-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
             </td>
             <td>
-              <button id="unici-<?= $index; ?>">&#128465;</button>
-              <a id="unici-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/destroy/<?= $igralec['id']; ?>">&#10004;</a>
-              <button id="unici-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
+              <button class="btn btn-outline-danger btn-sm" id="unici-<?= $index; ?>">&#128465;</button>
+              <a class="btn btn-danger btn-sm" id="unici-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/destroy/<?= $igralec['id']; ?>">&#10004;</a>
+              <button class="btn btn-primary btn-sm" id="unici-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
             </td>
           </tr>
 

@@ -26,13 +26,11 @@
 
 ?>
 <!-- Več o posamezneme igralcu ali igralki -->
-Samo en igralec/igralka
-|
-<a href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $en['id']; ?>">&#9998;</a>
-|
-<button id="izbrisi">&#128465;</button>
-<a id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $en['id']; ?>">&#10004;</a>
-<button id="izbrisi-cancel" style="display: none;">&#10006;</button>
+<h2>Samo en igralec/igralka</h2>
+<a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $en['id']; ?>">&#9998;</a>
+<button class="btn btn-outline-danger btn-sm" id="izbrisi">&#128465;</button>
+<a class="btn btn-danger btn-sm" id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $en['id']; ?>">&#10004;</a>
+<button class="btn btn-primary btn-sm" id="izbrisi-cancel" style="display: none;">&#10006;</button>
 <script>
   $(function () {
     $('#izbrisi').click(function () {
@@ -48,7 +46,7 @@ Samo en igralec/igralka
   })
 </script>
 
-<table>
+<table class="table table-striped table-hover">
   <tr>
     <td>Ime:</td>
     <td><?= $en['ime']; ?></td>

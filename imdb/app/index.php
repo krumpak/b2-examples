@@ -29,19 +29,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Seznam filmskih igralcev</title>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 <body>
-<a href="<?= getvar( 'APP_URL' ); ?>/app/">Seznam</a>
-|
-<a href="<?= getvar( 'APP_URL' ); ?>/app/bin">Smetnjak</a>
-|
-<a href="<?= getvar( 'APP_URL' ); ?>/app/add">Dodaj novega igralca/igralko</a>
-<hr>
-<br>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <a class="navbar-brand" href="<?= getvar( 'APP_URL' ); ?>/app/">Seznam</a>
+    <a class="navbar-brand" href="<?= getvar( 'APP_URL' ); ?>/app/bin">Smetnjak</a>
+    <a class="navbar-brand" href="<?= getvar( 'APP_URL' ); ?>/app/add">Dodaj novega igralca/igralko</a>
+  </nav>
 <?php
   if ( isset( $_GET['task'] ) && $_GET['task'] === 'view' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
@@ -120,7 +120,7 @@
   }
 endif;
 ?>
-
+</div>
 </body>
 </html>
 
