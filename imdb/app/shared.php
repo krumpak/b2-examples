@@ -13,11 +13,20 @@
           $value = preg_replace( '/^' . $var . '=/', '', $vars );
           $clean = preg_replace( '/["|\'|`]/', '', $value );
 
-          return trim($clean);
+          return trim( $clean );
         }
       }
     }
 
-    return NULL;
+    return null;
   }
+
+  function validacija() {
+    if ( isset( $_SESSION['token'] ) && strlen( $_SESSION['token'] ) > 0 ) {
+      return true;
+    }
+
+    return false;
+  }
+
 ?>

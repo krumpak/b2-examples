@@ -14,7 +14,7 @@
         'type' => 'error'
       );
 
-      header( 'Location: ' . getvar( 'APP_URL' ) . '/app/' );
+      header( 'Location: ' . getvar( 'APP_URL' ) . '/app/seznam' );
     }
 
   } catch ( PDOException $e ) {

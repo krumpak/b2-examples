@@ -35,7 +35,7 @@
         'type' => 'success'
       );
 
-      header( 'Location: ' . getvar( 'APP_URL' ) . '/app/' );
+      header( 'Location: ' . getvar( 'APP_URL' ) . '/app/seznam' );
 
     else :
 
