@@ -43,12 +43,12 @@
             <td><?= $index + 1; ?></td>
             <td><?= $igralec['ime'] ?></td>
             <td><?= $igralec['priimek'] ?></td>
-            <td><a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= $igralec['id']; ?>">&#8689;</a></td>
-            <td><a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $igralec['id']; ?>">&#9998;</a></td>
+            <td><a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= $igralec['id']; ?>"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+            <td><a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $igralec['id']; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
             <td>
-              <a class="btn btn-outline-danger btn-sm" id="izbrisi-<?= $index; ?>">&#128465;</a>
-              <a class="btn btn-danger btn-sm" id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $igralec['id']; ?>">&#10004;</a>
-              <a class="btn btn-primary btn-sm" id="izbrisi-cancel-<?= $index; ?>" style="display: none;">&#10006;</a>
+              <button class="btn btn-outline-danger btn-sm" id="izbrisi-<?= $index; ?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              <a class="btn btn-danger btn-sm" id="izbrisi-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $igralec['id']; ?>"><i class="fa fa-check" aria-hidden="true"></i></a>
+              <button class="btn btn-primary btn-sm" id="izbrisi-cancel-<?= $index; ?>" style="display: none;"><i class="fa fa-times" aria-hidden="true"></i></button>
             </td>
           </tr>
           <?php

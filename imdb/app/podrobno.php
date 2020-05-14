@@ -27,10 +27,10 @@
 ?>
 <!-- Več o posamezneme igralcu ali igralki -->
 <h2>Samo en igralec/igralka</h2>
-<a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $en['id']; ?>">&#9998;</a>
-<button class="btn btn-outline-danger btn-sm" id="izbrisi">&#128465;</button>
-<a class="btn btn-danger btn-sm" id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $en['id']; ?>">&#10004;</a>
-<button class="btn btn-primary btn-sm" id="izbrisi-cancel" style="display: none;">&#10006;</button>
+<a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/edit/<?= $en['id']; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+<button class="btn btn-outline-danger btn-sm" id="izbrisi"><i class="fa fa-trash" aria-hidden="true"></i></button>
+<a class="btn btn-danger btn-sm" id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= $en['id']; ?>"><i class="fa fa-check" aria-hidden="true"></i></a>
+<button class="btn btn-primary btn-sm" id="izbrisi-cancel" style="display: none;"><i class="fa fa-times" aria-hidden="true"></i></button>
 <script>
   $(function () {
     $('#izbrisi').click(function () {

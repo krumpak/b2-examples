@@ -51,14 +51,14 @@
             <td><?= date( 'j. n. Y, G:i:s', strtotime( $igralec['created_at'] ) ) ?></td>
             <td><?= $igralec['updated_at'] !== null ? date( 'j. n. Y, G:i:s', strtotime( $igralec['updated_at'] ) ) : '&nbps;' ?></td>
             <td>
-              <button class="btn btn-outline-success btn-sm" id="povrni-<?= $index; ?>">&#x27F2;</button>
-              <a class="btn btn-success btn-sm" id="povrni-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/revert/<?= $igralec['id']; ?>">&#10004;</a>
-              <button class="btn btn-primary btn-sm" id="povrni-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
+              <button class="btn btn-outline-success btn-sm" id="povrni-<?= $index; ?>"><i class="fa fa-undo" aria-hidden="true"></i></button>
+              <a class="btn btn-success btn-sm" id="povrni-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/revert/<?= $igralec['id']; ?>"><i class="fa fa-check" aria-hidden="true"></i></a>
+              <button class="btn btn-primary btn-sm" id="povrni-cancel-<?= $index; ?>" style="display: none;"><i class="fa fa-times" aria-hidden="true"></i></button>
             </td>
             <td>
-              <button class="btn btn-outline-danger btn-sm" id="unici-<?= $index; ?>">&#128465;</button>
-              <a class="btn btn-danger btn-sm" id="unici-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/destroy/<?= $igralec['id']; ?>">&#10004;</a>
-              <button class="btn btn-primary btn-sm" id="unici-cancel-<?= $index; ?>" style="display: none;">&#10006;</button>
+              <button class="btn btn-outline-danger btn-sm" id="unici-<?= $index; ?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              <a class="btn btn-danger btn-sm" id="unici-ok-<?= $index; ?>" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/destroy/<?= $igralec['id']; ?>"><i class="fa fa-check" aria-hidden="true"></i></a>
+              <button class="btn btn-primary btn-sm" id="unici-cancel-<?= $index; ?>" style="display: none;"><i class="fa fa-times" aria-hidden="true"></i></button>
             </td>
           </tr>
 

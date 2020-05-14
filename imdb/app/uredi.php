@@ -56,10 +56,10 @@
   }
 ?>
 <h2>Uredi podatke igralca/igrallke</h2>
-<a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= intval( $_GET['id'] ); ?>">&#8689;</a>
-<button class="btn btn-outline-danger btn-sm" id="izbrisi">&#128465;</button>
-<a class="btn btn-danger btn-sm" id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= intval( $_GET['id'] ); ?>">&#10004;</a>
-<button class="btn btn-primary btn-sm" id="izbrisi-cancel" style="display: none;">&#10006;</button>
+<a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/app/view/<?= intval( $_GET['id'] ); ?>"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+<button class="btn btn-outline-danger btn-sm" id="izbrisi"><i class="fa fa-trash" aria-hidden="true"></i></button>
+<a class="btn btn-danger btn-sm" id="izbrisi-ok" style="display: none;" href="<?= getvar( 'APP_URL' ); ?>/app/delete/<?= intval( $_GET['id'] ); ?>"><i class="fa fa-check" aria-hidden="true"></i></a>
+<button class="btn btn-primary btn-sm" id="izbrisi-cancel" style="display: none;"><i class="fa fa-times" aria-hidden="true"></i></button>
 <script>
   $(function () {
     $('#izbrisi').click(function () {
