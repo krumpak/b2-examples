@@ -31,6 +31,8 @@
   $slika = "<img src=\"URL\">";
   $slika = '<img src="URL">';
 
-  echo "<hr>Sem $ime $priimek. Star sem " . $starost . " let. Številko čevljev nosim $stevilkaCevlja! $ime sem že od rojstva. $spol.";
+  define("spol", 'moški');
+
+  echo "<hr>Sem $ime $priimek. Star sem " . $starost . " let. Številko čevljev nosim $stevilkaCevlja! $ime sem že od rojstva. " . spol . ".";
 
 ?>
