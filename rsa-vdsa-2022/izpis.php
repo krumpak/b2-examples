@@ -17,7 +17,7 @@
   echo 98 % 2; // 0
   echo "<br>Star sem " . 33 . "!";
 
-  $ime = 'Gašper';    // string
+  $ime = 'Gregor';    // string
   $priimek = "Kovač"; // string
   $starost = 33;      // integer
   $spol = true;       // boolean
@@ -25,7 +25,11 @@
   $spol = true;       // boolean
   $stevilkaCevlja = 42.5;  // float
   $array = array(1, 2, 3, 4);   // array
-  $array = [1, 2, 3, 4];        // array
+  $imena = [
+    "Gregor",
+    "Gašper",
+    "Gorazd"
+  ];        // array
   $object = (object)[];         // object
 
   $slika = "<img src=\"URL\">";
@@ -35,4 +39,73 @@
 
   echo "<hr>Sem $ime $priimek. Star sem " . $starost . " let. Številko čevljev nosim $stevilkaCevlja! $ime sem že od rojstva. " . spol . ".";
 
+  echo "<hr>";
+
+  echo($imena[2]);
+
+  echo "<hr> Array";
+
+  $starost = [
+    "Gregor" => 33,
+    "Gašper" => 43,
+    "Gorazd" => 53
+  ];
+
+  echo("$ime je star: " . $starost[$ime]);
+
+  echo "<hr> Object";
+
+  $starost = (object)[
+    "Gregor" => 33,
+    "Gašper" => 43,
+    "Gorazd" => 53
+  ];
+
+  echo("$ime je star: " . $starost->$ime);
+
+  echo "<hr>";
+
+  echo "Multidimensional Array<hr>";
+
+  $osebe = [
+    [
+      "ime" => 'Gregor',
+      "priimek" => 'Novak',
+      "starost" => 33,
+      "spol" => "M",
+      "naslov" => [
+        "ulica" => "Slovenska",
+        "h_stevilka" => 11,
+        "posta" => "Ljubljana"
+      ]
+    ],
+    [
+      "ime" => 'Gabrijela',
+      "priimek" => 'Kovač',
+      "starost" => 43,
+      "spol" => "Ž",
+      "naslov" => [
+        "ulica" => "Slovenska",
+        "h_stevilka" => 11,
+        "posta" => "Ljubljana"
+      ]
+    ],
+    [
+      "ime" => 'Gašper',
+      "priimek" => 'Medved',
+      "starost" => 23,
+      "spol" => "M",
+      "naslov" => [
+        "ulica" => "Slovenska",
+        "h_stevilka" => 11,
+        "posta" => "Ljubljana"
+      ]
+    ]
+  ];
+
+  echo($osebe[1]['ime'] . " je stara: " . $osebe[1]['starost']);
+
+  echo "<hr>";
+
+  print_r($osebe);
 ?>
