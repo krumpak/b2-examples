@@ -1,0 +1,20 @@
+[
+  {
+    "ime": "Gašper",
+    "priimek": "Novak",
+    "naslov": {
+      "ulica": "Slovenska",
+      "stevilka": "33",
+      "posta": "1000 Ljubljana"
+    }
+  },
+  {
+    "ime": "Miša",
+    "priimek": "Prešeren",
+    "naslov": {
+      "ulica": "Gorenjska ulica",
+      "stevilka": "29",
+      "posta": "4000 Kranj"
+    }
+  }
+]
