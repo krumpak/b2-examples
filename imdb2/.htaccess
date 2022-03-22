@@ -1,0 +1,6 @@
+RewriteEngine On
+
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
