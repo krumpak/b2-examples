@@ -42,6 +42,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
       <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/">Domov</a>
       <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/seznam">Seznam</a>
+      <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/dodaj">Dodaj novo</a>
     </nav>
 
   <?php
@@ -57,6 +58,10 @@
       include_once 'seznam.php';
 
       $clearMessage = true;
+
+    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'dodaj' ) :
+
+      include_once 'dodaj.php';
 
     else :
 
