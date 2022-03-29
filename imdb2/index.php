@@ -53,6 +53,10 @@
 
       $clearMessage = true;
 
+    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'uredi' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+
+      include_once 'uredi.php';
+
     elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'seznam' ) :
 
       include_once 'seznam.php';

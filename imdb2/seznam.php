@@ -31,6 +31,7 @@
         <td>Ime</td>
         <td>Priimek</td>
         <td></td>
+        <td></td>
       </tr>
 
       <?php foreach ( $array as $index => $igralec ) : ?>
@@ -41,6 +42,11 @@
           <td>
             <a class="btn btn-primary btn-sm" href="<?= getvar( 'APP_URL' ) ?>/oseba/<?= $igralec['id'] ?>">
               <i class="fa fa-external-link" aria-hidden="true"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/uredi/<?= $igralec['id']; ?>">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
           </td>
         </tr>

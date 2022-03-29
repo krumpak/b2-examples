@@ -30,6 +30,10 @@
 
 <h2>Samo en igralec/igralka</h2>
 
+<a class="btn btn-outline-primary btn-sm" href="<?= getvar( 'APP_URL' ); ?>/uredi/<?= $en['id']; ?>">
+  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+</a>
+
 <table class="table table-striped table-hover">
   <tr>
     <td>Ime:</td>
