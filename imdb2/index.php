@@ -43,6 +43,7 @@
       <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/">Domov</a>
       <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/seznam">Seznam</a>
       <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/dodaj">Dodaj novo</a>
+      <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/smetnjak">Smetnjak</a>
     </nav>
 
   <?php
@@ -61,6 +62,14 @@
 
       include_once 'izbrisi.php';
 
+    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'povrni' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+
+      include_once 'povrni.php';
+
+    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'unici' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+
+      include_once 'unici.php';
+
     elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'seznam' ) :
 
       include_once 'seznam.php';
@@ -70,6 +79,10 @@
     elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'dodaj' ) :
 
       include_once 'dodaj.php';
+
+    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'smetnjak' ) :
+
+      include_once 'smetnjak.php';
 
     else :
 
