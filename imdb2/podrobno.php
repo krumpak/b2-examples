@@ -34,6 +34,10 @@
   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 </a>
 
+<a class="btn btn-outline-danger btn-sm" href="<?= getvar( 'APP_URL' ); ?>/izbrisi/<?= $en['id']; ?>">
+  <i class="fa fa-trash" aria-hidden="true"></i>
+</a>
+
 <table class="table table-striped table-hover">
   <tr>
     <td>Ime:</td>

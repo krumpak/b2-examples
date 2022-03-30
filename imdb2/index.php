@@ -57,6 +57,10 @@
 
       include_once 'uredi.php';
 
+    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'izbrisi' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+
+      include_once 'izbrisi.php';
+
     elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'seznam' ) :
 
       include_once 'seznam.php';
