@@ -6,11 +6,12 @@
   if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) :
 
     try {
-      $update = $conn->prepare( "UPDATE udelezenec02.imdb2_osebe SET ime=:ime, priimek=:priimek, updated_at=now() WHERE id = :id AND status = 1" );
+      $update = $conn->prepare( "UPDATE udelezenec02.imdb2_osebe SET ime=:ime, priimek=:priimek, kraj=:kraj, updated_at=now() WHERE id = :id AND status = 1" );
       $update->execute( array(
         ":id"      => intval( $_POST['id'] ),
         ":ime"     => $_POST['ime'],
-        ":priimek" => $_POST['priimek']
+        ":priimek" => $_POST['priimek'],
+        ":kraj"    => $_POST['kraj']
       ) );
 
       $_SESSION['message'] = array(
@@ -29,6 +30,8 @@
   endif;
 
   try {
+    $kraji = $conn->query( "SELECT * FROM udelezenec02.imdb2_kraji ORDER BY kraj_ime ASC" )->fetchAll();
+
     $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb2_osebe WHERE id = :id AND status = 1 LIMIT 1" );
     $sql->execute( array( ':id' => intval( $_GET['id'] ) ) );
     $en = $sql->fetch();
@@ -64,6 +67,18 @@
     <label for="priimek" class="col-sm-2 col-form-label">Priimek:</label>
     <div class="col-sm-10">
       <input class="form-control" type="text" name="priimek" id="priimek" value="<?= $en['priimek']; ?>" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="kraj" class="col-sm-2 col-form-label">Kraj:</label>
+    <div class="col-sm-10">
+      <select name="kraj" id="kraj" class="form-control">
+        <option value="" selected disabled>-- izberi kraj --</option>
+        <?php foreach ( $kraji as $kraj ) : ?>
+          <option value="<?= $kraj['kraj_id'] ?>" <?= $kraj['kraj_id'] === $en['kraj'] ? 'selected' : ''; ?>><?= $kraj['kraj_ime'] ?></option>
+        <?php endforeach; ?>
+      </select>
     </div>
   </div>
   <br>
