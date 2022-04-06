@@ -20,3 +20,15 @@
 
     return null;
   }
+
+  function validacija() {
+    if ( isset( $_SESSION['token'] ) && strlen( $_SESSION['token'] ) > 0  ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  function zaciniGeslo($geslo) {
+    return sha1( $geslo . getvar( 'SOL' ) ) . getvar( 'POPER' );
+  }

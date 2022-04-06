@@ -40,54 +40,66 @@
 <body>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-      <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/">Domov</a>
-      <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/seznam">Seznam</a>
-      <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/dodaj">Dodaj novo</a>
-      <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/smetnjak">Smetnjak</a>
+      <?php if ( !validacija() ) : ?>
+        <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/">Domov</a>
+      <?php endif; ?>
+      <?php if ( validacija() ) : ?>
+        <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/seznam">Seznam</a>
+        <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/dodaj">Dodaj novo</a>
+        <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/smetnjak">Smetnjak</a>
+        <a class="navbar-brand" href="<?= getvar( 'APP_URL' ) ?>/odjava">Odjava</a>
+      <?php endif; ?>
     </nav>
 
   <?php
 
-    if ( isset( $_GET['task'] ) && $_GET['task'] === 'oseba' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+    if ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'oseba' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
       include_once 'podrobno.php';
 
       $clearMessage = true;
 
-    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'uredi' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'uredi' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
       include_once 'uredi.php';
 
-    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'izbrisi' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'izbrisi' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
       include_once 'izbrisi.php';
 
-    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'povrni' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'povrni' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
       include_once 'povrni.php';
 
-    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'unici' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'unici' && isset( $_GET['id'] ) && preg_match( '/^\d+$/', $_GET['id'] ) ) :
 
       include_once 'unici.php';
 
-    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'seznam' ) :
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'seznam' ) :
 
       include_once 'seznam.php';
 
       $clearMessage = true;
 
-    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'dodaj' ) :
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'dodaj' ) :
 
       include_once 'dodaj.php';
 
-    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'smetnjak' ) :
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'smetnjak' ) :
 
       include_once 'smetnjak.php';
 
+    elseif ( validacija() && isset( $_GET['task'] ) && $_GET['task'] === 'odjava' ) :
+
+      include_once 'odjava.php';
+
+    elseif ( isset( $_GET['task'] ) && $_GET['task'] === 'registracija' ) :
+
+      include_once 'registracija.php';
+
     else :
 
-//      include_once 'prijava.php';
-      echo "nisi prijavljen, ne moreš videt vsebine";
+      include_once 'prijava.php';
 
     endif; ?>
 
