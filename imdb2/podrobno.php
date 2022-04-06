@@ -6,7 +6,7 @@
   }
 
   try {
-    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb2_osebe INNER JOIN udelezenec02.imdb2_kraji ON imdb2_osebe.kraj=imdb2_kraji.kraj_id WHERE id = :id AND status = 1 LIMIT 1" );
+    $sql = $conn->prepare( "SELECT * FROM udelezenec02.imdb2_osebe LEFT JOIN udelezenec02.imdb2_kraji ON imdb2_osebe.kraj=imdb2_kraji.kraj_id WHERE id = :id AND status = 1 LIMIT 1" );
     $sql->execute( array( ':id' => intval( $_GET['id'] ) ) );
     $en = $sql->fetch();
 
