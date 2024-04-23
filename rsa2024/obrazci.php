@@ -26,12 +26,8 @@
       array_push($napake, ['tip' => 'priimek', 'sporocilo' => 'Priimek je prekratek.']);
     }
 
-    foreach ([
-      'gmail.com',
-      'email.si',
-      'yahoo.com',
-      ] as $domena) {
-
+    $nedovoljeni_emaili  = ['gmail.com', 'email.si', 'yahoo.com'];
+    foreach ($nedovoljeni_emaili as $domena) {
       if ( strpos($_POST['email'], $domena) > 0 ) {
         array_push($napake, ['tip' => 'email', 'sporocilo' => $domena.' ni dovoljen.']);
       }
