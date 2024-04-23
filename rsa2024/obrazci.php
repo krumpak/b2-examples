@@ -18,7 +18,7 @@
   }
 
   $napake = [];
-  if (isset($_POST)) {
+  if (isset($_POST) && count($_POST) !== 0) {
     if (strlen($_POST['ime']) <= 2) {
       array_push($napake, ['tip' => 'ime', 'sporocilo' => 'Ime je prekratko.']);
     }
