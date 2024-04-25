@@ -1,4 +1,8 @@
 <?php
+  echo "<pre>";
+  print_r($_POST);
+  echo "</pre>";
+
   // teačajna lista valur
   $tecajnica = [
     [
@@ -34,6 +38,8 @@
     ]
   ];
 
+  array_push($tecajnica, $_POST);
+
   // Izpis tabele na zaslonu
 
   echo "<table border='1'>"; ?>
@@ -52,9 +58,21 @@
       echo "<td>" . $valuta["valuta"] . "</td>";
       echo "<td style='text-align:right'>" . $valuta["tecaj"] . "</td>";
     echo "</tr>";
-  }
+  } ?>
 
-  echo "</table>";
+  <form action="./tecajnica.php" method="post">
+    <tr>
+      <td><input type="text" name="drzava" id="drzava"></td>
+      <td><input type="text" name="oznaka" id="oznaka"></td>
+      <td><input type="text" name="valuta" id="valuta"></td>
+      <td><input type="text" name="tecaj" id="tecaj"></td>
+    </tr>
+    <tr>
+      <td colspan="4"><input type="submit" value="Dodaj valuto" style="width:100%"></td>
+    </tr>
+  </form>
+
+  <?php echo "</table>";
 
 
 
