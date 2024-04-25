@@ -68,7 +68,7 @@
   if (isset($_GET) && isset($_GET['naloga']) && $_GET['naloga'] === 'reset') {
     session_unset();
 
-    $page = $_SERVER['PHP_SELF'];
+    $page = str_replace('.php', '', $_SERVER['PHP_SELF']);
     header("Refresh: 0; url=$page");
     die();
   }
@@ -93,11 +93,11 @@
       echo "<td>" . $valuta["oznaka"] . "</td>";
       echo "<td>" . $valuta["valuta"] . "</td>";
       echo "<td style='text-align:right'>" . $valuta["tecaj"] . "</td>";
-      echo "<td><a href='./tecajnica.php?naloga=izbris&id=".$valuta["id"]."' target='_self'>🗑️</a></td>";
+      echo "<td><a href='./tecajnica?naloga=izbris&id=".$valuta["id"]."' target='_self'>🗑️</a></td>";
     echo "</tr>";
   } ?>
 
-  <form action="./tecajnica.php" method="post">
+  <form action="./tecajnica" method="post">
     <tr>
       <td><input type="hidden" name="id" id="id" value="<?php echo rand(9999,9999999) ?>" readonly>Nov vnos:</td>
       <td><input type="text" name="drzava" id="drzava"></td>
@@ -108,7 +108,7 @@
     </tr>
     <tr>
       <td colspan="4"><input type="submit" value="Dodaj valuto" style="width:100%"></td>
-      <td colspan="2"><a href="./tecajnica.php?naloga=reset" target="_self">Reset</a></td>
+      <td colspan="2"><a href="./tecajnica?naloga=reset" target="_self">Reset</a></td>
     </tr>
   </form>
 
