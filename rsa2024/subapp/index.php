@@ -2,12 +2,14 @@
 
   session_start();
 
-  $sporočilo = '';
+  $sporocilo = '';
+  $dovoljenje = false;
 
   if (isset($_SESSION['uporabnik']) && !empty($_SESSION['uporabnik'])) {
-    $sporočilo = 'Pozdravljen ' . $_SESSION['uporabnik']['ime'] . '!';
+    $sporocilo = 'Pozdravljen ' . $_SESSION['uporabnik']['ime'] . '!';
+    $dovoljenje = true;
   } else {
-    $sporočilo = 'Niste prijavljeni.';
+    $sporocilo = 'Niste prijavljeni.';
   }
 
   define( 'varovalka', true );
@@ -22,11 +24,17 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
   $title = 'Ponudba';
   $file = 'ponudba.php';
 } elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'seznam') {
+  if (!$dovoljenje) {
+    header('Location: ./prijava');
+  }
   $title = 'Seznam';
   $file = 'seznam.php';
 } elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'prijava') {
   $title = 'Prijava';
   $file = 'prijava.php';
+} elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'odjava') {
+  $title = 'Odjava';
+  $file = 'odjava.php';
 } else {
   $title = 'Domov';
   $file = 'domov.php';
@@ -100,15 +108,16 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
 
 <nav><ul>
     <li><a href="./">Domov</a></li>
-    <li><a href="./kontakt">Kontakt</a></li>
+    <li><a href="http://students.b2.eu/udeleznec02/rsa2024/./index.php?kontakt">Kontakt</a></li>
     <li><a href="./ponudba">Ponudba</a></li>
-    <li><a href="./seznam">Seznam</a></li>
-    <li><a href="./prijava">Prijava</a></li>
+    <?php if ($dovoljenje) { ?><li><a href="./odjava"><li><a href="./seznam">Seznam</a></li><?php } ?>
+    <?php if (!$dovoljenje) { ?><li><a href="./prijava">Prijava</a></li><?php } ?>
+    <?php if ($dovoljenje) { ?><li><a href="./odjava">Odjava</a></li><?php } ?>
   </ul>
 </nav>
 
 <div class="sporocilo">
-  <span><?php echo $sporočilo; ?></span>
+  <span><?php echo $sporocilo; ?></span>
 </div>
 
 <?php include $file; ?>
