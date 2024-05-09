@@ -2,17 +2,14 @@
 
   session_start();
 
-  $sporocilo = '';
+  define( 'varovalka', true );
+
   $dovoljenje = false;
 
   if (isset($_SESSION['uporabnik']) && !empty($_SESSION['uporabnik'])) {
-    $sporocilo = 'Pozdravljen ' . $_SESSION['uporabnik']['ime'] . '!';
+    $_SESSION['sporocilo'] = 'Pozdravljen ' . $_SESSION['uporabnik']['ime'] . '!';
     $dovoljenje = true;
-  } else {
-    $sporocilo = 'Niste prijavljeni.';
   }
-
-  define( 'varovalka', true );
 
   $title = '';
   $file = '';
@@ -32,6 +29,9 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
 } elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'prijava') {
   $title = 'Prijava';
   $file = 'prijava.php';
+} elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'pozabljeno-geslo') {
+  $title = 'Pozabljeno geslo';
+  $file = 'pozabljeno-geslo.php';
 } elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'odjava') {
   $title = 'Odjava';
   $file = 'odjava.php';
@@ -108,17 +108,19 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
 
 <nav><ul>
     <li><a href="./">Domov</a></li>
-    <li><a href="http://students.b2.eu/udeleznec02/rsa2024/./index.php?kontakt">Kontakt</a></li>
+    <li><a href="./kontakt">Kontakt</a></li>
     <li><a href="./ponudba">Ponudba</a></li>
-    <?php if ($dovoljenje) { ?><li><a href="./odjava"><li><a href="./seznam">Seznam</a></li><?php } ?>
+    <?php if ($dovoljenje) { ?><li><a href="./seznam">Seznam</a></li><?php } ?>
     <?php if (!$dovoljenje) { ?><li><a href="./prijava">Prijava</a></li><?php } ?>
     <?php if ($dovoljenje) { ?><li><a href="./odjava">Odjava</a></li><?php } ?>
   </ul>
 </nav>
 
-<div class="sporocilo">
-  <span><?php echo $sporocilo; ?></span>
+<?php if (isset($_SESSION['sporocilo'])) { ?>
+  <div class="sporocilo">
+  <span><?php echo $_SESSION['sporocilo']; ?></span>
 </div>
+<?php } ?>
 
 <?php include $file; ?>
 
@@ -128,3 +130,4 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
 
 </body>
 </html>
+<?php unset($_SESSION['sporocilo']); ?>

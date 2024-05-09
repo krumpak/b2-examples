@@ -7,7 +7,9 @@
 
   if (isset($_SESSION['uporabnik']) && !empty($_SESSION['uporabnik'])) {
     unset($_SESSION['uporabnik']);
-    header('Location: index.php');
+    $_SESSION['sporocilo'] = 'Uspešno ste se odjavili.';
+    header('Location: ./');
+    die();
   }
 
 ?>
