@@ -73,6 +73,14 @@
     die();
   }
 
+  if (isset($_GET) && isset($_GET['naloga']) && $_GET['naloga'] === 'izpis') {
+    header("Content-Type: application/json; charset=UTF-8");
+
+    echo json_encode($_SESSION["tecajnica"]);
+
+    die();
+  }
+
   // Izpis tabele na zaslonu
 
   echo "<table border='1'>"; ?>

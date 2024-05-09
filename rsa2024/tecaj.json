@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1569635",
+    "drzava": "ZDA",
+    "oznaka": "USD",
+    "valuta": "Ameriški dolar",
+    "tecaj": "1,0460"
+  },
+  {
+    "id": "9834535",
+    "drzava": "Srbija",
+    "oznaka": "RSD",
+    "valuta": "Srbski dinar",
+    "tecaj": "112,4900"
+  },
+  {
+    "id": "98356835",
+    "drzava": "Norveška",
+    "oznaka": "NOK",
+    "valuta": "Norveška krona",
+    "tecaj": "11,5240"
+  },
+  {
+    "id": "123564",
+    "drzava": "Japonska",
+    "oznaka": "JPY",
+    "valuta": "Japonski jen",
+    "tecaj": "162,7800"
+  },
+  {
+    "id": "98745632",
+    "drzava": "Velika Britanija",
+    "oznaka": "GBP",
+    "valuta": "Angleški funt",
+    "tecaj": "0,8400"
+  },
+  {
+    "id": "456123",
+    "drzava": "Švica",
+    "oznaka": "CHF",
+    "valuta": "Švicarski frank",
+    "tecaj": "0,9580"
+  },
+  {
+    "id": "4580246",
+    "drzava": "Bosna in Hercegovina",
+    "oznaka": "BAM",
+    "valuta": "Bosanska marka",
+    "tecaj": "2,0100"
+  }
+]
