@@ -1,5 +1,15 @@
 <?php
 
+  session_start();
+
+  $sporočilo = '';
+
+  if (isset($_SESSION['uporabnik']) && !empty($_SESSION['uporabnik'])) {
+    $sporočilo = 'Pozdravljen ' . $_SESSION['uporabnik']['ime'] . '!';
+  } else {
+    $sporočilo = 'Niste prijavljeni.';
+  }
+
   define( 'varovalka', true );
 
   $title = '';
@@ -14,6 +24,9 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
 } elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'seznam') {
   $title = 'Seznam';
   $file = 'seznam.php';
+} elseif (isset($_GET['podstran']) && $_GET['podstran'] == 'prijava') {
+  $title = 'Prijava';
+  $file = 'prijava.php';
 } else {
   $title = 'Domov';
   $file = 'domov.php';
@@ -71,6 +84,16 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
       color: white;
       text-align: center;
     }
+    .sporocilo {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .sporocilo span {
+      padding: 10px;
+      border: 1px solid #e3e3e3;
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
@@ -81,7 +104,12 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
     <li><a href="./ponudba">Ponudba</a></li>
     <li><a href="./seznam">Seznam</a></li>
     <li><a href="./prijava">Prijava</a></li>
-  </ul></nav>
+  </ul>
+</nav>
+
+<div class="sporocilo">
+  <span><?php echo $sporočilo; ?></span>
+</div>
 
 <?php include $file; ?>
 
