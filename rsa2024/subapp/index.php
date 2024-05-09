@@ -7,7 +7,7 @@
   $dovoljenje = false;
 
   if (isset($_SESSION['uporabnik']) && !empty($_SESSION['uporabnik'])) {
-    $_SESSION['sporocilo'] = 'Pozdravljen ' . $_SESSION['uporabnik']['ime'] . '!';
+    $_SESSION['sporocilo'] = 'Pozdravljen/a ' . $_SESSION['uporabnik']['ime'] . '!';
     $dovoljenje = true;
   }
 
