@@ -117,11 +117,14 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
   </ul>
 </nav>
 
-<?php if (isset($_SESSION['sporocilo'])) { ?>
+<?php if (isset($_SESSION['sporocilo'])) {
+  $sporocilo = $_SESSION['sporocilo'];  ?>
   <div class="sporocilo">
-  <span><?php echo $_SESSION['sporocilo']; ?></span>
+  <span><?php echo $sporocilo; ?></span>
 </div>
 <?php } ?>
+
+<?php unset($_SESSION['sporocilo']); ?>
 
 <?php include $file; ?>
 
@@ -131,4 +134,3 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
 
 </body>
 </html>
-<?php unset($_SESSION['sporocilo']); ?>
