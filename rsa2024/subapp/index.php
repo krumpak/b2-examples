@@ -4,6 +4,8 @@
 
   define( 'varovalka', true );
 
+  include_once 'helper.php';
+
   $dovoljenje = false;
 
   if (isset($_SESSION['uporabnik']) && !empty($_SESSION['uporabnik'])) {
@@ -100,7 +102,6 @@ if (isset($_GET['podstran']) && $_GET['podstran'] == 'kontakt') {
       padding: 10px;
       border: 1px solid #e3e3e3;
       background-color: #f1f1f1;
-      padding: 10px;
     }
   </style>
 </head>
