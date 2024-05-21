@@ -1,9 +1,11 @@
 <?php
 
-  $gostitelj = "localhost";
-  $uporabnik = "udelezenec02";
-  $geslo = "password";
-  $podatkovna_baza = "udelezenec02";
+  include_once 'helper.php';
+
+  $gostitelj = getVar('HOST');
+  $podatkovna_baza = getVar('DB');
+  $uporabnik = getVar('USER');
+  $geslo = getVar('PASSWORD');
 
   try {
     $conn = new PDO("mysql:host=$gostitelj;dbname=$podatkovna_baza", $uporabnik, $geslo);

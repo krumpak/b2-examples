@@ -2,3 +2,4 @@
 !.gitignore
 !php/
 !vdsa2024/
+.env
