@@ -60,7 +60,9 @@
   <title>Posodobi žuželko</title>
 </head>
 <body>
-<a href="./baza.php">Seznam žuželk</a>
+<a href="./baza.php">seznam žuželk</a> |
+<a href="./vnos.php">dodajanje žuželk</a>
+<h1>Posodobi žuželko</h1>
 
 <form action="" method="post">
   <label for="ime">Ime* <input type="text" name="ime" id="ime" value="<?php echo $result['ime']; ?>" required></label><br>

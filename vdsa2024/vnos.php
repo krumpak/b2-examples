@@ -8,7 +8,10 @@
 </head>
 <body>
 
-<a href="./baza.php">seznam žuželk</a>
+<a href="./baza.php">seznam žuželk</a> |
+<a href="./vnos.php">dodajanje žuželk</a>
+
+<h1>Dodaj žuželko</h1>
 <?php
 
   include_once 'helper.php';

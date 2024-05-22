@@ -7,6 +7,7 @@
   <title>Seznam žuželk</title>
 </head>
 <body>
+<a href="./baza.php">seznam žuželk</a> |
 <a href="./vnos.php">dodajanje žuželk</a>
 <?php
 
