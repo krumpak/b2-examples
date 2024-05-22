@@ -36,7 +36,7 @@
       $ime = $vrstica['ime'];
       $lat = $vrstica['latinsko'];
 
-      echo "<li>$ime <i>(lat.: $lat)</i> <a href='./izbris.php?id=$id'>🗑️</a></li>";
+      echo "<li>$ime <i>(lat.: $lat)</i> <a href='./posodobi.php?id=$id'>✏️️</a> | <a href='./izbris.php?id=$id'>🗑️</a></li>";
     }
     echo "</ul>";
 
