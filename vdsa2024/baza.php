@@ -26,16 +26,17 @@
   }
 
   try {
-    $sql = $conn->prepare("SELECT * FROM zuzelke");
+    $sql = $conn->prepare("SELECT * FROM zuzelke ORDER BY ime, latinsko ASC");
     $sql->execute();
     $result = $sql->fetchAll();
 
     echo "<h1>Seznam žuželk</h1><ul></ul>";
     foreach ($result as $vrstica) {
+      $id = $vrstica['id'];
       $ime = $vrstica['ime'];
       $lat = $vrstica['latinsko'];
 
-      echo "<li>$ime <i>(lat.: $lat)</i></li>";
+      echo "<li>$ime <i>(lat.: $lat)</i> <a href='./izbris.php?id=$id'>🗑️</a></li>";
     }
     echo "</ul>";
 
