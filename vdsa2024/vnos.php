@@ -29,15 +29,13 @@
   try {
 
     if(isset($_POST) && !empty($_POST) && isset($_POST['ime']) && isset($_POST['lat'])) {
-      $inser = $conn->prepare("INSERT INTO zuzelke (ime, latinsko) VALUES (:ime, :lat)");
-      $inser->execute([
+      $insert = $conn->prepare("INSERT INTO zuzelke (ime, latinsko) VALUES (:ime, :lat)");
+      $insert->execute([
         'ime' => $_POST['ime'],
         'lat' => $_POST['lat']
       ]);
 
       header('Location: baza.php');
-
-      print_r($_POST);
     }
 
   } catch(PDOException $e) {
