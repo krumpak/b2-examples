@@ -31,11 +31,18 @@
 
   try {
 
-    if(isset($_POST) && !empty($_POST) && isset($_POST['ime']) && isset($_POST['lat'])) {
+    if(isset($_POST) && !empty($_POST) && isset($_POST['ime']) && isset($_POST['lat']) && isset($_POST['drzava'])) {
+
       $insert = $conn->prepare("INSERT INTO zuzelke (ime, latinsko) VALUES (:ime, :lat)");
       $insert->execute([
         'ime' => $_POST['ime'],
         'lat' => $_POST['lat']
+      ]);
+
+      $insertDrzava = $conn->prepare("INSERT INTO zuzelke_poselitev (zuzelka_id, drzava) VALUES (:id, :drzava)");
+      $insertDrzava->execute([
+        'id' => $conn->lastInsertId(),
+        'drzava' => $_POST['drzava']
       ]);
 
       header('Location: baza.php');
@@ -53,6 +60,14 @@
   <label for="ime">Ime* <input type="text" name="ime" id="ime" required></label><br>
   <label for="lat">Latinsko* <input type="text" name="lat" id="lat" required></label><br>
   * obvezno polje<br>
+  <select name="drzava" id="drzava">
+    <option value="" selected disabled>--  izberi državo  --</option>
+    <option value="Slovenija">Slovenija</option>
+    <option value="Avstrija">Avstrija</option>
+    <option value="Italija">Italija</option>
+    <option value="Hrvaška">Hrvaška</option>
+    <option value="Madžarska">Madžarska</option>
+  </select><br>
   <input type="submit" value="Dodaj">
 </form>
 

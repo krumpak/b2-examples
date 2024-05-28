@@ -14,6 +14,11 @@
       $conn = new PDO("mysql:host=$gostitelj;dbname=$podatkovna_baza", $uporabnik, $geslo, array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+      $deleteDrzve = $conn->prepare("DELETE FROM zuzelke_poselitev WHERE zuzelka_id = :id");
+      $deleteDrzve->execute([
+        'id' => $_GET['id']
+      ]);
+
       $delete = $conn->prepare("DELETE FROM zuzelke WHERE id = :id LIMIT 1");
       $delete->execute([
         'id' => $_GET['id']
