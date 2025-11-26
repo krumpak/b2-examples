@@ -19,5 +19,7 @@
         <h1>Odpravljam se na pot!</h1>
 
         <h1>Moja pot se je končala!</h1>
+
+        <a href=""></a> <
     </body>
 </html>

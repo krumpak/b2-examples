@@ -1,0 +1,32 @@
+.okvir {
+    border: 2px solid red;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+header {
+    border: 2px solid green;
+    height: 150px;
+}
+nav {
+    border: 2px solid orange;
+    height: 30px;
+}
+.vsebina {
+    border: 2px solid cyan;
+    display: flex;
+    flex-flow: row nowrap;
+}
+main {
+    border: 2px solid magenta;
+    max-width: 700px;
+    width: 100%;
+    min-height: 300px;
+}
+aside {
+    border: 2px solid orange;
+    width: 300px;
+}
+footer {
+    border: 2px solid green;
+    height: 50px;
+}
