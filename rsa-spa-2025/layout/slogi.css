@@ -1,11 +1,35 @@
+:root {
+    --border-radius: 50px;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+}
 .okvir {
-    border: 2px solid red;
     max-width: 1000px;
     margin: 0 auto;
 }
 header {
-    border: 2px solid green;
     height: 150px;
+    background-image: url('./slike/ozadje.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 30px;
+}
+header img {
+    height: 80px;
+    width: auto;
+    margin-left: 30px;
+}
+header span {
+    color: white;
+    font-size: 35px;
 }
 nav {
     border: 2px solid orange;
