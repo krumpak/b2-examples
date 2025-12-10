@@ -96,7 +96,7 @@ article:hover {
 article figure {
     margin: 0;
     filter: sepia(1);
-    transition: all 3s ease;
+    transition: all 1s ease;
 }
 article figure figcaption {
     display: none;
