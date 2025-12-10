@@ -84,8 +84,8 @@ article {
     flex: 0 0 calc(33.33% - 20px);
     margin: 0;
     padding: 0;
-    box-shadow: 1px 1px 5px rgba(0,0,0,.25);
     border-radius: var(--border-radius);
+    box-shadow: 1px 1px 5px rgba(0,0,0,.25);
     transition: all .3s ease;
 }
 article:hover {
@@ -95,6 +95,8 @@ article:hover {
 
 article figure {
     margin: 0;
+    filter: sepia(1);
+    transition: all .3s ease;
 }
 article figure figcaption {
     display: none;
@@ -106,6 +108,9 @@ article img {
     object-position: center;
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
+}
+article:hover figure {
+    filter: sepia(0);
 }
 
 article section {
