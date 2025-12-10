@@ -168,16 +168,15 @@ aside li {
 aside a {
     color: var(--color-green);
     text-decoration: none;
-    transition: all .3s ease;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-flow: row nowrap;
     gap: 5px;
+    transition: all .3s ease;
 }
 aside a:hover {
     color: var(--color-dark-green);
-    text-decoration: none;
 }
 aside img {
     width: 30px;
@@ -185,7 +184,6 @@ aside img {
     object-fit: contain;
     object-position: center;
 }
-
 
 footer {
     height: 80px;
