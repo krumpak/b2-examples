@@ -5,7 +5,25 @@ $naslov = "Življenje v naravi";
 
 // datum v nogi, upošteva slovenski časovni pas
 date_default_timezone_set("Europe/Ljubljana");
-$datumVnogi = date("j. n. Y H:i");
+$datumVnogi = danVtednu() . ", " . date("j. F Y H:i");
+
+function danVtednu () {
+  $slovarDnevov = [
+    "nedelja",
+    "ponedeljek",
+    "torek",
+    "sreda",
+    "četrtek",
+    "petek",
+    "sobota",
+  ];
+
+  $indexDanasnjegaDne = date("w");
+
+  $danasnjiDan = $slovarDnevov[$indexDanasnjegaDne];
+  
+  return $danasnjiDan;
+}
 
 ?>
 <!doctype html>
