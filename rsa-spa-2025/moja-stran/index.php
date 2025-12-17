@@ -1,6 +1,11 @@
 <?php
 
+// naslov spletne strani
 $naslov = "Življenje v naravi";
+
+// datum v nogi, upošteva slovenski časovni pas
+date_default_timezone_set("Europe/Ljubljana");
+$datumVnogi = date("j. n. Y H:i");
 
 ?>
 <!doctype html>
@@ -121,7 +126,7 @@ $naslov = "Življenje v naravi";
         </div>
         <footer>
             &#169;
-            2025
+            <?php echo $datumVnogi; ?>
             <a href="./">www.moja-stran.si</a>
         </footer>
     </div>
