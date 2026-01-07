@@ -4,6 +4,12 @@ if ( ! defined( 'varovalka' ) ) {
   exit( '403' );
 }
 
+$title = 'Članki .::. ' . $naslov;
+
+$aktivnost = 'clanki';
+
+ob_start();
+
 if ( count($vsebina) === 0 ) :
 
   echo "ni člankov";
@@ -27,4 +33,6 @@ else :
 
   <?php endforeach;
 
-endif; ?>
+endif;
+
+$html = ob_get_clean();
