@@ -1,5 +1,7 @@
 <?php
 
+define( 'varovalka', true );
+
 // naslov spletne strani
 $naslov = "Življenje v naravi";
 
@@ -55,70 +57,7 @@ function danVtednu () {
         <div class="vsebina">
             <main>
 
-                <article>
-                    <figure>
-                        <img src="./slike/article.png" alt="Slika prvega članka">
-                        <figcaption>Podnapis k moji prvi sliki prvega članka</figcaption>
-                    </figure>
-                    <section>
-                        <h2>Moj prvi članek</h2>
-                        <time datetime="2025-12-03">3. december 2025</time>
-                        <p>Kratek povzetek mojega prvega članka na spletni strani</p>
-                        <a href="">Preberi več</a>
-                    </section>
-                </article>
-
-                <article>
-                    <figure>
-                        <img src="./slike/article.png" alt="Slika prvega članka">
-                        <figcaption>Podnapis k moji prvi sliki prvega članka</figcaption>
-                    </figure>
-                    <section>
-                        <h2>Moj prvi članek</h2>
-                        <time datetime="2025-12-03">3. december 2025</time>
-                        <p>Kratek povzetek mojega prvega članka na spletni strani</p>
-                        <a href="">Preberi več</a>
-                    </section>
-                </article>
-
-                <article>
-                    <figure>
-                        <img src="./slike/article.png" alt="Slika prvega članka">
-                        <figcaption>Podnapis k moji prvi sliki prvega članka</figcaption>
-                    </figure>
-                    <section>
-                        <h2>Moj prvi članek</h2>
-                        <time datetime="2025-12-03">3. december 2025</time>
-                        <p>Kratek povzetek mojega prvega članka na spletni strani</p>
-                        <a href="">Preberi več</a>
-                    </section>
-                </article>
-
-                <article>
-                    <figure>
-                        <img src="./slike/article.png" alt="Slika prvega članka">
-                        <figcaption>Podnapis k moji prvi sliki prvega članka</figcaption>
-                    </figure>
-                    <section>
-                        <h2>Moj prvi članek</h2>
-                        <time datetime="2025-12-03">3. december 2025</time>
-                        <p>Kratek povzetek mojega prvega članka</p>
-                        <a href="">Preberi več</a>
-                    </section>
-                </article>
-
-                <article>
-                    <figure>
-                        <img src="./slike/article.png" alt="Slika prvega članka">
-                        <figcaption>Podnapis k moji prvi sliki prvega članka</figcaption>
-                    </figure>
-                    <section>
-                        <h2>Moj prvi članek</h2>
-                        <time datetime="2025-12-03">3. december 2025</time>
-                        <p>Kratek povzetek mojega prvega članka</p>
-                        <a href="">Preberi več</a>
-                    </section>
-                </article>
+                <?php include_once "vsebina.php"; ?>
                 
             </main>
             <aside>
