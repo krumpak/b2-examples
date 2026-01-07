@@ -23,5 +23,5 @@ foreach ( $vsebina as $vrstica ) {
     <h2><?php echo $clanek['naslov']; ?></h2>
     <time datetime="2025-12-03"><?php echo $clanek['datum']; ?></time>
     <p><?php echo $clanek['clanek']; ?></p>
-    <a href="./index.php">Nazaj</a>
+    <a href="./">Nazaj</a>
 </section>

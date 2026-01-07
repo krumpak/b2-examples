@@ -21,7 +21,7 @@ else :
             <h2><?php echo $clanek['naslov']; ?></h2>
             <time datetime="2025-12-03"><?php echo $clanek['datum']; ?></time>
             <p><?php echo $clanek['clanek']; ?></p>
-            <a href="./index.php?naloga=clanek&id=<?php echo $clanek['id']; ?>">Preberi več</a>
+            <a href="./clanek/<?php echo $clanek['id']; ?>">Preberi več</a>
         </section>
     </article>
 

@@ -33,6 +33,7 @@ function danVtednu () {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="http://ucenje.azi.si/udelezenec02/rsa-spa-2025/moja-stran/">
     <title><?php echo $naslov; ?></title>
     <link rel="stylesheet" href="slogi.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
