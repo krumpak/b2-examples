@@ -5,9 +5,9 @@ if ( ! defined( 'varovalka' ) ) {
 }
 
 $uporabniki = [
-  [ 'email' => 'test@test.si', 'password' => 'test', 'ime' => 'Admin' ],
-  [ 'email' => 'miha@test.si', 'password' => 'test', 'ime' => 'Miha' ],
-  [ 'email' => 'marjeta@test.si', 'password' => 'test', 'ime' => 'Marjeta' ],
+  [ 'email' => 'test@test.si',    'geslo' => password_hash('test', PASSWORD_DEFAULT), 'ime' => 'Admin' ],
+  [ 'email' => 'miha@test.si',    'geslo' => password_hash('test', PASSWORD_DEFAULT), 'ime' => 'Miha' ],
+  [ 'email' => 'marjeta@test.si', 'geslo' => password_hash('test', PASSWORD_DEFAULT), 'ime' => 'Marjeta' ],
 ];
 
 $title = 'Prijava .::. ' . $naslov;
@@ -25,12 +25,12 @@ if (isset($_POST)) {
   }
 
   foreach ( $uporabniki as $uporabnik ) {
-    if ($uporabnik['email'] === $email && $uporabnik['password'] === $password) {
+    if ($uporabnik['email'] === $email) {
       $najdeni_uporabnik = $uporabnik;
     }
   }
 
-  if ($najdeni_uporabnik) {
+  if ($najdeni_uporabnik && password_verify($password, $najdeni_uporabnik['geslo'])) {
     $_SESSION['email'] = $email;
     $_SESSION['ime'] = $najdeni_uporabnik['ime'];
     $_SESSION['auth'] = true;
