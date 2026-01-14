@@ -45,6 +45,8 @@ if ($naloga === 'clanek' && $id !== NULL) {
     include_once "_clanki.php";
 } else if ($naloga === 'kontakt' && $id === NULL) {
     include_once "_kontakt.php";
+} else if ($naloga === 'obdelava-podatkov' && $id === NULL) {
+    include_once "_obdelava-podatkov.php";
 } else if ($naloga === 'literatura' && $id === NULL) {
     include_once "_literatura.php";
 } else {

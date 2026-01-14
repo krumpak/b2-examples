@@ -10,7 +10,7 @@ $aktivnost = 'kontakt';
 
 ob_start(); ?>
 
-<form action="">
+<form action="./obdelava-podatkov" method="POST">
   <label for="email">Email</label>
   <input type="email" name="email">
   <br>
