@@ -7,7 +7,6 @@ if ( ! defined( 'varovalka' ) ) {
 $title = 'Kontakt .::. ' . $naslov;
 $aktivnost = 'kontakt';
 
-
 ob_start(); ?>
 
 <form action="./obdelava-podatkov" method="POST">

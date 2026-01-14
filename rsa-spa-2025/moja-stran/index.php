@@ -2,6 +2,7 @@
 
 define( 'varovalka', true );
 
+session_start();
 
 include_once "data.php";
 
@@ -39,7 +40,7 @@ if (! preg_match( '/^\d+$/', $id )) {
     $id = NULL;
 }
 
-if ($naloga === 'clanek' && $id !== NULL) {
+if ($naloga === 'clanek' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
     include_once "_clanek.php";
 } else if ($naloga === 'clanki' && $id === NULL) {
     include_once "_clanki.php";
@@ -49,6 +50,10 @@ if ($naloga === 'clanek' && $id !== NULL) {
     include_once "_obdelava-podatkov.php";
 } else if ($naloga === 'literatura' && $id === NULL) {
     include_once "_literatura.php";
+} else if ($naloga === 'prijava' && $id === NULL) {
+    include_once "_prijava.php";
+} else if ($naloga === 'odjava' && $id === NULL) {
+    include_once "_odjava.php";
 } else {
     include_once "_domov.php";
 }
@@ -79,6 +84,9 @@ if ($naloga === 'clanek' && $id !== NULL) {
                 <li><a class="<?php echo $aktivnost === 'clanki' ? 'active' : ''; ?>" href="./clanki">Članki</a></li>
                 <li><a class="<?php echo $aktivnost === 'kontakt' ? 'active' : ''; ?>" href="./kontakt">Kontakt</a></li>
                 <li><a class="<?php echo $aktivnost === 'literatura' ? 'active' : ''; ?>" href="./literatura">Literatura</a></li>
+                <li><a class="<?php echo $aktivnost === 'prijava' ? 'active' : ''; ?>" href="./prijava">Prijava</a></li>
+                <li><a class="<?php echo $aktivnost === 'odjava' ? 'active' : ''; ?>" href="./odjava">Odjava</a></li>
+                <li><a><?php echo $_SESSION['ime'] ?? ''; ?></a></li>
             </ul>
         </nav>
         <div class="vsebina">
