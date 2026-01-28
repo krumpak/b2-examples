@@ -4,6 +4,7 @@ define( 'varovalka', true );
 
 session_start();
 
+include_once "database.php";
 include_once "data.php";
 
 // naslov spletne strani
