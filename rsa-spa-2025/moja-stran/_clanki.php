@@ -7,6 +7,7 @@ if ( ! defined( 'varovalka' ) ) {
 $sql = $conn->prepare('SELECT * FROM clanki');
 $sql->execute();
 $vsebina = $sql->fetchAll();
+$conn = null;
 
 $title = 'Članki .::. ' . $naslov;
 

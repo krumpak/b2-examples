@@ -4,16 +4,12 @@ if ( ! defined( 'varovalka' ) ) {
   exit( '403' );
 }
 
-$id = $_GET['id'];
-
-$clanek = null;
-
-foreach ( $vsebina as $vrstica ) {
-  if ( $vrstica['id'] == $id ) {
-    $clanek = $vrstica;
-    break;
-  }
-}
+$sql = $conn->prepare('SELECT * FROM clanki WHERE id = :id LIMIT 1');
+$sql->execute( [
+  ':id' => $_GET['id']
+] );
+$clanek = $sql->fetch() ?: NULL;
+$conn = null;
 
 if ($clanek === null) {
   header('Location: ../clanki');
