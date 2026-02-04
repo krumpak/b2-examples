@@ -10,7 +10,7 @@ $aktivnost = 'clanki';
 
 ob_start();
 
-$form = $_SESSION['form'];
+$form = $_SESSION['form'] ?? NULL;
 $_SESSION['form'] = NULL;
 
 $naslov = $form['naslov'] ?? '';
