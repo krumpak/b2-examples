@@ -6,7 +6,6 @@ session_start();
 
 include_once "library.php";
 include_once "database.php";
-// include_once "data.php";
 
 // naslov spletne strani
 $naslov = "Življenje v naravi";

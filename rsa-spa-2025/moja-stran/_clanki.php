@@ -7,7 +7,7 @@ if ( ! defined( 'varovalka' ) ) {
 $sql = $conn->prepare('SELECT * FROM clanki');
 $sql->execute();
 $vsebina = $sql->fetchAll();
-$conn = null;
+$conn = NULL;
 
 $title = 'Članki .::. ' . $naslov;
 
@@ -26,13 +26,23 @@ else :
     <article>
         <figure>
             <img src="./slike/<?php echo $clanek['slika']; ?>" alt="<?php echo $clanek['naslov']; ?>">
-            <figcaption><?php echo $clanek['naslov']; ?></figcaption>
+            <figcaption>
+              <?php echo $clanek['naslov']; ?>
+            </figcaption>
         </figure>
         <section>
-            <h2><?php echo $clanek['naslov']; ?></h2>
-            <time datetime="2025-12-03"><?php echo YMD_to_DMY($clanek['datum']); ?></time>
-            <p><?php echo $clanek['clanek']; ?></p>
-            <a href="./clanek/<?php echo $clanek['id']; ?>">Preberi več</a>
+            <h2>
+              <?php echo $clanek['naslov']; ?>
+            </h2>
+            <time datetime="<?php echo $clanek['datum']; ?>">
+              <?php echo YMD_to_DMY($clanek['datum']); ?>
+            </time>
+            <p>
+              <?php echo $clanek['clanek']; ?>
+            </p>
+            <a href="./clanek/<?php echo $clanek['id']; ?>">
+              Preberi več
+            </a>
         </section>
     </article>
 
