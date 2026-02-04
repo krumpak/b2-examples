@@ -245,7 +245,10 @@ footer a:hover {
     width: calc(100% - 100px);
     text-align: left;
 }
-
+form {
+    display: block;
+    width: 100%;
+}
 input[type="submit"] {
     border: none;
     background-color: var(--color-green);

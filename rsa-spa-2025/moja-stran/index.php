@@ -13,7 +13,7 @@ $title = $naslov;
 $aktivnost = "domov";
 $html = "";
 
-$obvestilo = $_SESSION['obvestilo'];
+$obvestilo = $_SESSION['obvestilo'] ?? NULL;
 $_SESSION['obvestilo'] = NULL;
 
 // datum v nogi, upošteva slovenski časovni pas

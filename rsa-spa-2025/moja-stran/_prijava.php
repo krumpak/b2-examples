@@ -45,7 +45,7 @@ if (isset($_POST)) {
 ob_start(); ?>
 
 <div><?php echo $opozorilo; ?></div>
-<br>
+<h2>Prijavni obrazec</h2>
 <form action="./prijava" method="POST">
   <div class="vrstica">
     <label for="email">Email</label>
