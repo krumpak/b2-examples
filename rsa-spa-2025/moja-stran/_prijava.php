@@ -47,14 +47,15 @@ ob_start(); ?>
 <div><?php echo $opozorilo; ?></div>
 <br>
 <form action="./prijava" method="POST">
-  <label for="email">Email</label>
-  <input type="email" name="email">
-  <br>
-  <label for="password">Geslo</label>
-  <input type="password" name="password">
-  <br>
+  <div class="vrstica">
+    <label for="email">Email</label>
+    <input type="email" name="email">
+  </div>
+  <div class="vrstica">
+    <label for="password">Geslo</label>
+    <input type="password" name="password">
+  </div>
   <input type="submit" value="Prijava">
-  <br>
 </form>
 
 <?php $html = ob_get_clean();

@@ -3,6 +3,8 @@
     --color-green: #9d3993;
     --color-dark-green: #671b5d;
     --color-gray: #c6c6c6;
+    --color-success: green;
+    --color-error: red;
 }
 html,
 body {
@@ -113,7 +115,15 @@ article img {
 article:hover figure {
     filter: sepia(0);
 }
-
+.posamezna-slika {
+    width: 100%;
+}
+.posamezna-slika img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center
+}
 article section {
     padding: 20px;
 }
@@ -214,4 +224,62 @@ footer a {
 }
 footer a:hover {
     text-decoration: none;
+}
+
+.vrstica {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+.vrstica label {
+    width: 100px;
+    text-align: right;
+}
+
+.vrstica input,
+.vrstica textarea {
+    width: calc(100% - 100px);
+    text-align: left;
+}
+
+input[type="submit"] {
+    border: none;
+    background-color: var(--color-green);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: all .5s ease;
+    width: 100%;
+    border-radius: var(--border-radius);
+    margin-top: 10px
+}
+input[type="submit"]:hover {
+    background-color: var(--color-dark-green);
+}
+
+.obvestilo {
+    display: block;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 999
+}
+.obvestilo span {
+    padding: 10px;
+    display: inline-block;
+    color: white;
+}
+.obvestilo span.success {
+    background-color: var(--color-success);
+}
+.obvestilo span.error {
+    background-color: var(--color-error);
 }

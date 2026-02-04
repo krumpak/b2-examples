@@ -45,3 +45,21 @@ function env ($polje, $default = NULL, $pot = __DIR__ . '/.env') {
 function YMD_to_DMY ($datum) {
   return date('j. n. Y', strtotime($datum));
 }
+
+function danVtednu () {
+  $slovarDnevov = [
+    "nedelja",
+    "ponedeljek",
+    "torek",
+    "sreda",
+    "četrtek",
+    "petek",
+    "sobota",
+  ];
+
+  $indexDanasnjegaDne = date("w");
+
+  $danasnjiDan = $slovarDnevov[$indexDanasnjegaDne];
+  
+  return $danasnjiDan;
+}

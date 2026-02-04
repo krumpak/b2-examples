@@ -26,7 +26,7 @@ ob_start();
 
 ?>
 
-<figure>
+<figure class="posamezna-slika">
     <img src="./slike/<?php echo $clanek['slika']; ?>" alt="<?php echo $clanek['naslov']; ?>">
     <figcaption>
       <?php echo $clanek['naslov']; ?>

@@ -50,4 +50,18 @@ else :
 
 endif;
 
+if (($_SESSION['auth'] ?? false) === true) : ?>
+    <article>
+        <section>
+            <h2>
+              +
+            </h2>
+            <a href="./nov-clanek">
+              Dodaj članek
+            </a>
+        </section>
+    </article>
+
+<?php endif;
+
 $html = ob_get_clean();

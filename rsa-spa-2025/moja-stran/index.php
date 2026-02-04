@@ -11,28 +11,14 @@ include_once "database.php";
 $naslov = "Življenje v naravi";
 $title = $naslov;
 $aktivnost = "domov";
+$html = "";
+
+$obvestilo = $_SESSION['obvestilo'];
+$_SESSION['obvestilo'] = NULL;
 
 // datum v nogi, upošteva slovenski časovni pas
 date_default_timezone_set("Europe/Ljubljana");
 $datumVnogi = danVtednu() . ", " . date("j. F Y H:i");
-
-function danVtednu () {
-  $slovarDnevov = [
-    "nedelja",
-    "ponedeljek",
-    "torek",
-    "sreda",
-    "četrtek",
-    "petek",
-    "sobota",
-  ];
-
-  $indexDanasnjegaDne = date("w");
-
-  $danasnjiDan = $slovarDnevov[$indexDanasnjegaDne];
-  
-  return $danasnjiDan;
-}
                 
 $naloga = $_GET['naloga'] ?? NULL;
 $id = $_GET['id'] ?? NULL;
@@ -41,7 +27,11 @@ if (! preg_match( '/^\d+$/', $id )) {
     $id = NULL;
 }
 
-if ($naloga === 'clanek' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
+if ($naloga === 'nov-clanek' && ($_SESSION['auth'] ?? false) === true) {
+    include_once "_dodaj-clanek.php";
+} else if ($naloga === 'vnos-clanka' && ($_SESSION['auth'] ?? false) === true) {
+    include_once "_vnos-clanka.php";
+} else if ($naloga === 'clanek' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
     include_once "_clanek.php";
 } else if ($naloga === 'clanki' && $id === NULL) {
     include_once "_clanki.php";
@@ -74,6 +64,10 @@ if ($naloga === 'clanek' && $id !== NULL && ($_SESSION['auth'] ?? false) === tru
 </head>
 <body>
 
+    <div class="obvestilo">
+        <?php echo $obvestilo; ?>
+    </div>
+    
     <div class="okvir">
         <header>
             <img src="./slike/hp-white.svg" alt="Logo">
