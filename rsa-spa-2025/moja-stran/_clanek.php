@@ -4,8 +4,6 @@ if ( ! defined( 'varovalka' ) ) {
   exit( '403' );
 }
 
-$id = $_GET['id'];
-
 $sql = $conn->prepare('SELECT * FROM clanki WHERE id = :id LIMIT 1');
 $sql->execute( [
   ':id' => $id
@@ -47,6 +45,10 @@ ob_start();
     </a>
     <?php if (($_SESSION['auth'] ?? false) === true) : ?>
     <br>
+    <br>
+    <a href="./uredi-clanek/<?php echo $clanek['id']; ?>" class="gumb">
+      Uredi
+    </a>
     <a href="./izbrisi-clanek/<?php echo $clanek['id']; ?>" class="gumb">
       Izbriši
     </a>

@@ -8,8 +8,6 @@ $title = 'Nov članek .::. ' . $naslov;
 
 $aktivnost = 'clanki';
 
-ob_start();
-
 $form = $_SESSION['form'] ?? NULL;
 $_SESSION['form'] = NULL;
 
@@ -18,7 +16,9 @@ $datum = $form['datum'] ?? '';
 $slika = $form['slika'] ?? '';
 $clanek = $form['clanek'] ?? '';
 
- ?>
+ob_start(); ?>
+
+<h2>Nov članek</h2>
 
 <form action="./vnos-clanka" method="POST">
   <div class="vrstica">
