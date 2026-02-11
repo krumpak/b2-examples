@@ -13,6 +13,11 @@ $sql->execute( [
   ':id' => $id
 ] );
 $clanek = $sql->fetch() ?: NULL;
+
+$sql_ = $conn->prepare('SELECT * FROM celine ORDER BY ime ASC');
+$sql_->execute();
+$celine_seznam = $sql_->fetchAll();
+
 $conn = NULL;
 
 if ($clanek === NULL) {
@@ -23,6 +28,7 @@ if ($clanek === NULL) {
 $naslov = $clanek['naslov'] ?? '';
 $datum = $clanek['datum'] ?? '';
 $slika = $clanek['slika'] ?? '';
+$celina_id = $clanek['celina_id'] ?? '';
 $clanek = $clanek['clanek'] ?? '';
 
 if (($_SESSION['form'] ?? NULL) !== NULL) {
@@ -34,6 +40,7 @@ if (($_SESSION['form'] ?? NULL) !== NULL) {
   $datum = $form['datum'] ?? '';
   $slika = $form['slika'] ?? '';
   $clanek = $form['clanek'] ?? '';
+  $celina_id = $form['celina_id'] ?? '';
 }
 
 ob_start(); ?>
@@ -48,16 +55,27 @@ ob_start(); ?>
     <input type="text" name="naslov" value="<?php echo $naslov; ?>">
   </div>
   <div class="vrstica">
-  <label for="datum">Datum:</label>
-  <input type="date" name="datum" value="<?php echo $datum; ?>">
+    <label for="datum">Datum:</label>
+    <input type="date" name="datum" value="<?php echo $datum; ?>">
   </div>
   <div class="vrstica">
-  <label for="slika">Slika:</label>
-  <input type="text" name="slika" value="<?php echo $slika; ?>">
+    <label for="slika">Slika:</label>
+    <input type="text" name="slika" value="<?php echo $slika; ?>">
+  </div>
+    <div class="vrstica">
+    <label for="celina_id">Celina:</label>
+    <select name="celina_id">
+      <option value="" selected disabled hidden>--- Izberi celino ---</option>
+      <?php foreach ( $celine_seznam as $celina ) : ?>
+        <option value="<?php echo $celina['id']; ?>" <?php echo $celina_id == $celina['id'] ? 'selected' : ''; ?>>
+          <?php echo $celina['ime']; ?>
+        </option> 
+      <?php endforeach; ?>
+    </select>
   </div>
   <div class="vrstica">
-  <label for="clanek">Članek:</label>
-  <textarea name="clanek"><?php echo $clanek; ?></textarea>
+    <label for="clanek">Članek:</label>
+    <textarea name="clanek"><?php echo $clanek; ?></textarea>
   </div>
   <input type="submit" value="Posodobi">
 

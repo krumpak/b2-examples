@@ -10,8 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $datum = $_POST['datum'];
   $slika = $_POST['slika'];
   $clanek = $_POST['clanek'];
+  $celina_id = $_POST['celina_id'];
 
-  if ($id === '' || $naslov === '' || $datum === '' || $slika === '' || $clanek === '') {
+  if ($id === '' || $naslov === '' || $datum === '' || $slika === '' || $celina_id === '' || $clanek === '') {
     $_SESSION['form'] = $_POST;
 
     $_SESSION['obvestilo'] = '<span class="error">Prazna polja niso dovoljena.</span>';
@@ -19,13 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
   }
 
-  $sql = $conn->prepare('UPDATE clanki SET naslov = :naslov, datum = :datum, slika = :slika, clanek = :clanek WHERE id = :id LIMIT 1');
+  $sql = $conn->prepare('UPDATE clanki SET naslov = :naslov, datum = :datum, slika = :slika, celina_id = :celina_id, clanek = :clanek WHERE id = :id LIMIT 1');
   $success = $sql->execute( [
     ':id' => $id,
     ':naslov' => $naslov,
     ':datum' => $datum,
     ':slika' => $slika,
-    ':clanek' => $clanek
+    ':clanek' => $clanek,
+    ':celina_id' => $celina_id
   ] );
   $conn = NULL;
 

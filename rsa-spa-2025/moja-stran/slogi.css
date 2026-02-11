@@ -241,7 +241,8 @@ footer a:hover {
 }
 
 .vrstica input,
-.vrstica textarea {
+.vrstica textarea,
+.vrstica select {
     width: calc(100% - 100px);
     text-align: left;
 }

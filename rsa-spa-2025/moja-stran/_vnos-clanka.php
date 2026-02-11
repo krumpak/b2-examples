@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $datum = $_POST['datum'];
   $slika = $_POST['slika'];
   $clanek = $_POST['clanek'];
+  $celina_id = $_POST['celina_id'];
 
   if ($naslov === '' || $datum === '' || $slika === '' || $clanek === '') {
     $_SESSION['form'] = $_POST;
@@ -18,12 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
   }
 
-  $sql = $conn->prepare('INSERT INTO clanki (naslov, datum, slika, clanek) VALUES (:naslov, :datum, :slika, :clanek)');
+  $sql = $conn->prepare('INSERT INTO clanki (naslov, datum, slika, clanek, celina_id) VALUES (:naslov, :datum, :slika, :clanek, :celina_id)');
   $success = $sql->execute( [
     ':naslov' => $naslov,
     ':datum' => $datum,
     ':slika' => $slika,
     ':clanek' => $clanek,
+    ':celina_id' => $celina_id,
   ] );
   $conn = NULL;
 
