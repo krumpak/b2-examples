@@ -45,6 +45,12 @@ ob_start();
     <a href="./clanki">
       Nazaj
     </a>
+    <?php if (($_SESSION['auth'] ?? false) === true) : ?>
+    <br>
+    <a href="./izbrisi-clanek/<?php echo $clanek['id']; ?>" class="gumb">
+      Izbriši
+    </a>
+    <?php endif; ?>
 </section>
 
 <?php $html = ob_get_clean();

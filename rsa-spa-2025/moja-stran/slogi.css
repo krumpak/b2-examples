@@ -249,14 +249,16 @@ form {
     display: block;
     width: 100%;
 }
+.gumb,
 input[type="submit"] {
     border: none;
+    display: inline-block;
     background-color: var(--color-green);
     color: white;
     padding: 10px;
     cursor: pointer;
     transition: all .5s ease;
-    width: 100%;
+    width: auto;
     border-radius: var(--border-radius);
     margin-top: 10px
 }

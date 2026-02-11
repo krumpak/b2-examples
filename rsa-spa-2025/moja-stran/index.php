@@ -31,6 +31,8 @@ if ($naloga === 'nov-clanek' && ($_SESSION['auth'] ?? false) === true) {
     include_once "_dodaj-clanek.php";
 } else if ($naloga === 'vnos-clanka' && ($_SESSION['auth'] ?? false) === true) {
     include_once "_vnos-clanka.php";
+} else if ($naloga === 'izbrisi-clanek' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
+    include_once "_izbris-clanka.php";
 } else if ($naloga === 'clanek' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
     include_once "_clanek.php";
 } else if ($naloga === 'clanki' && $id === NULL) {
