@@ -261,7 +261,9 @@ input[type="submit"] {
     transition: all .5s ease;
     width: auto;
     border-radius: var(--border-radius);
-    margin-top: 10px
+    margin-top: 10px;
+    font-size: 14px;
+    text-decoration: none;
 }
 input[type="submit"]:hover {
     background-color: var(--color-dark-green);

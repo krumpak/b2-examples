@@ -49,6 +49,8 @@ if ($naloga === 'nov-clanek' && ($_SESSION['auth'] ?? false) === true) {
     include_once "_literatura.php";
 } else if ($naloga === 'prijava' && $id === NULL) {
     include_once "_prijava.php";
+} else if ($naloga === 'registracija' && $id === NULL) {
+    include_once "_registracija.php";
 } else if ($naloga === 'odjava' && $id === NULL) {
     include_once "_odjava.php";
 } else {

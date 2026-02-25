@@ -17,7 +17,7 @@ if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
   }
     
-  $sql = $conn->prepare('SELECT * FROM uporabniki WHERE email = :email LIMIT 1');
+  $sql = $conn->prepare('SELECT * FROM uporabniki WHERE email = :email AND aktivnost = 1 LIMIT 1');
   $sql->execute( [
     ':email' => $email
   ] );
@@ -60,5 +60,6 @@ ob_start(); ?>
   </div>
   <input type="submit" value="Prijava">
 </form>
+<a class="gumb" href="./registracija">Registracija</a>
 
 <?php $html = ob_get_clean();
