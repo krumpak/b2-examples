@@ -39,6 +39,14 @@ if ($naloga === 'nov-clanek' && ($_SESSION['auth'] ?? false) === true) {
     include_once "_izbris-clanka.php";
 } else if ($naloga === 'clanek' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
     include_once "_clanek.php";
+} else if ($naloga === 'uporabniki' && $id === NULL && ($_SESSION['auth'] ?? false) === true) {
+    include_once "_uporabniki.php";
+} else if ($naloga === 'uredi-uporabnika' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
+    include_once "_uredi-uporabnika.php";
+} else if ($naloga === 'ureditev-uporabnika' && ($_SESSION['auth'] ?? false) === true) {
+    include_once "_ureditev-uporabnika.php";
+} else if ($naloga === 'izbrisi-uporabnika' && $id !== NULL && ($_SESSION['auth'] ?? false) === true) {
+    include_once "_izbrisi-uporabnika.php";
 } else if ($naloga === 'clanki' && $id === NULL) {
     include_once "_clanki.php";
 } else if ($naloga === 'kontakt' && $id === NULL) {
@@ -92,6 +100,7 @@ if ($naloga === 'nov-clanek' && ($_SESSION['auth'] ?? false) === true) {
                     <li><a class="<?php echo $aktivnost === 'prijava' ? 'active' : ''; ?>" href="./prijava">Prijava</a></li>
                 <?php endif; ?>
                 <?php if (($_SESSION['auth'] ?? false) === true) : ?>
+                    <li><a class="<?php echo $aktivnost === 'uporabniki' ? 'active' : ''; ?>" href="./uporabniki">Uporabniki</a></li>
                     <li><a class="<?php echo $aktivnost === 'odjava' ? 'active' : ''; ?>" href="./odjava">Odjava</a></li>
                     <li><a><?php echo $_SESSION['ime'] ?? ''; ?></a></li>
                 <?php endif; ?>

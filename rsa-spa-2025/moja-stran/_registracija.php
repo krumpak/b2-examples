@@ -25,7 +25,6 @@ if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     ':email' => $email
   ] );
   $unikatni_uporabnik = $unikaten->fetch() ?: NULL;
-  $conn = NULL;
 
   if ($unikatni_uporabnik !== NULL) {
     $_SESSION['obvestilo'] = '<span class="error">Uporabnik/email že obstaja.</span>';

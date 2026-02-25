@@ -62,7 +62,7 @@ ob_start(); ?>
     <label for="slika">Slika:</label>
     <input type="text" name="slika" value="<?php echo $slika; ?>">
   </div>
-    <div class="vrstica">
+  <div class="vrstica">
     <label for="celina_id">Celina:</label>
     <select name="celina_id">
       <option value="" selected disabled hidden>--- Izberi celino ---</option>

@@ -291,3 +291,16 @@ input[type="submit"]:hover {
 .obvestilo span.error {
     background-color: var(--color-error);
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px gray solid;
+    border-radius: var(--border-radius);
+}
+td, th {
+    padding: 5px;
+    border: 1px gray solid;
+    text-align: left;
+}
