@@ -85,9 +85,15 @@ if ($naloga === 'nov-clanek' && ($_SESSION['auth'] ?? false) === true) {
                 <li><a class="<?php echo $aktivnost === 'clanki' ? 'active' : ''; ?>" href="./clanki">Članki</a></li>
                 <li><a class="<?php echo $aktivnost === 'kontakt' ? 'active' : ''; ?>" href="./kontakt">Kontakt</a></li>
                 <li><a class="<?php echo $aktivnost === 'literatura' ? 'active' : ''; ?>" href="./literatura">Literatura</a></li>
-                <li><a class="<?php echo $aktivnost === 'prijava' ? 'active' : ''; ?>" href="./prijava">Prijava</a></li>
-                <li><a class="<?php echo $aktivnost === 'odjava' ? 'active' : ''; ?>" href="./odjava">Odjava</a></li>
-                <li><a><?php echo $_SESSION['ime'] ?? ''; ?></a></li>
+                
+                <?php if (($_SESSION['auth'] ?? false) === false) : ?>
+                    <li><a class="<?php echo $aktivnost === 'prijava' ? 'active' : ''; ?>" href="./prijava">Prijava</a></li>
+                <?php endif; ?>
+                <?php if (($_SESSION['auth'] ?? false) === true) : ?>
+                    <li><a class="<?php echo $aktivnost === 'odjava' ? 'active' : ''; ?>" href="./odjava">Odjava</a></li>
+                    <li><a><?php echo $_SESSION['ime'] ?? ''; ?></a></li>
+                <?php endif; ?>
+
             </ul>
         </nav>
         <div class="vsebina">

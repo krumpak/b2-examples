@@ -4,30 +4,30 @@ if ( ! defined( 'varovalka' ) ) {
   exit( '403' );
 }
 
-$uporabniki = [
-  [ 'email' => 'test@test.si',    'geslo' => password_hash('test', PASSWORD_DEFAULT), 'ime' => 'Admin' ],
-  [ 'email' => 'miha@test.si',    'geslo' => password_hash('test', PASSWORD_DEFAULT), 'ime' => 'Miha' ],
-  [ 'email' => 'marjeta@test.si', 'geslo' => password_hash('test', PASSWORD_DEFAULT), 'ime' => 'Marjeta' ],
-];
-
 $title = 'Prijava .::. ' . $naslov;
 $aktivnost = 'prijava';
 
-$opozorilo = '';
-
-if (isset($_POST)) {
+if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'] ?? '';
   $password = $_POST['password'] ?? '';
-  $najdeni_uporabnik = NULL;
 
   if ($email !== '' && strpos($email, '@') === false) {
-    $opozorilo = 'Email neustrezen';
+    $_SESSION['obvestilo'] = '<span class="error">Neustrezen email.</span>';
+    header('Location: ./prijava');
+    exit();
   }
+    
+  $sql = $conn->prepare('SELECT * FROM uporabniki WHERE email = :email LIMIT 1');
+  $sql->execute( [
+    ':email' => $email
+  ] );
+  $najdeni_uporabnik = $sql->fetch() ?: NULL;
+  $conn = NULL;
 
-  foreach ( $uporabniki as $uporabnik ) {
-    if ($uporabnik['email'] === $email) {
-      $najdeni_uporabnik = $uporabnik;
-    }
+  if ($email !== '' && $password !== '' && $najdeni_uporabnik === NULL) {
+    $_SESSION['obvestilo'] = '<span class="error">Uporabnik ne obstaja.</span>';
+    header('Location: ./prijava');
+    exit();
   }
 
   if ($najdeni_uporabnik && password_verify($password, $najdeni_uporabnik['geslo'])) {
@@ -35,16 +35,19 @@ if (isset($_POST)) {
     $_SESSION['ime'] = $najdeni_uporabnik['ime'];
     $_SESSION['auth'] = true;
     
+    $_SESSION['obvestilo'] = '<span class="success">Prijava uspešna.</span>';
     header('Location: ./clanki');
+    exit();
+  } else {
+    $_SESSION['obvestilo'] = '<span class="error">Napačen email ali geslo.</span>';
+    header('Location: ./prijava');
     exit();
   }
 
 }
 
-
 ob_start(); ?>
 
-<div><?php echo $opozorilo; ?></div>
 <h2>Prijavni obrazec</h2>
 <form action="./prijava" method="POST">
   <div class="vrstica">
