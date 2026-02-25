@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `uporabniki` (
   `email` varchar(255) CHARACTER SET utf8 NOT NULL,
   `geslo` varchar(255) CHARACTER SET utf8 NOT NULL,
   `ime` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `vloga` varchar(255) NOT NULL DEFAULT 'gost',
+  `vloga` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT 'gost',
   `aktivnost` tinyint(1) NOT NULL DEFAULT '0',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
